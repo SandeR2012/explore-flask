@@ -160,34 +160,55 @@ When making security related decisions, I always like to assume that my reposito
 
 \end{aside}
 
-When using Git, you can create a special file called *.gitignore* in your repository. In it, list regular expression patterns to match against filenames. Any filename that matches one of the patterns will be ignored by Git. I recommend ignoring `*.pyc` and `/instance` to get you started. Instance folders are used to make secret configuration variables available to your application.
+When using Git, you can create a special file called *.gitignore* in your repository. In it, list regular expression patterns to match against filenames. Any filename that matches one of the patterns will be ignored by Git. I recommend using the _.gitignore_ shown in Listing~\ref{code:ignore} to get you started.
 
-{ .gitignore:
+\begin{codelisting}
+\label{code:ignore}
+\codecaption{An example \textit{.gitignore} file to get you started}
+```
 *.pyc
 instance/
-}
+```
+\end{codelisting}
 
-{ SEE ALSO:
-* You can read more about *.gitignore* here: http://git-scm.com/docs/gitignore
-* The Flask docs have a good section on instance folders: http://flask.pocoo.org/docs/config/#instance-folders
-}
+Instance folders are used to make secret configuration variables available to your application in a more secure way. We'll talk more about them in Chapter~\ref{cha:configuration}.
+
+\begin{aside}
+\label{aside:ignore_links}
+\heading{Related Links}
+
+- You can read more about _.gitignore_ here: [http://git-scm.com/docs/gitignore](http://git-scm.com/docs/gitignore)
+
+\end{aside}
 
 ## Debugging
 
 ### Debug Mode
 
-Flask comes with a handy feature called "debug mode." To turn it on, you just have to set `debug = True` in your development configuration. When it's on, the server will reload on code changes and errors will come with a stack trace and an interactive console.
+Flask comes with a handy feature called debug mode. To turn it on, you just have to set `debug = True` in your development configuration. When it's on, the server will reload on code changes and errors will come with a stack trace and an interactive console.
 
-{ WARNING: Take care not to enable debug mode in production. The interactive console enables arbitrary code execution and would be a massive security vulnerability if it was left on in the live site. }
+\begin{aside}
+\label{aside:debug_warning}
+\heading{WARNING}
 
-{ SEE MORE:
-- Take a look at the quick start section on debug mode: http://flask.pocoo.org/docs/quickstart/#debug-mode
-- There is some good information on handling errors, logging and working with other debuggers here: flask.pocoo.org/docs/errorhandling }
+Take care not to enable debug mode in production. The interactive console enables arbitrary code execution and would be a massive security vulnerability if it was left on in the live site.
+
+\end{aside}
+
 
 ### Flask-DebugToolbar
 
-Flask-DebugToolbar is another great tool for debugging problems with your application. In debug mode, it overlays a side-bar onto every page in your application. The side bar gives you debug information about SQL queries, logging, versions, templates, configuration and other fun stuff.
+Flask-DebugToolbar is another great tool for debugging problems with your application. In debug mode, it overlays a side-bar onto every page in your application. The side bar gives you information about SQL queries, logging, versions, templates, configuration and other fun stuff that makes it easier to track down problems.
 
+\begin{aside}
+\label{aside:debug_links}
+\heading{Related Links}
+
+- Take a look at the quick start section on debug mode: [http://flask.pocoo.org/docs/quickstart/#debug-mode](http://flask.pocoo.org/docs/quickstart/#debug-mode)
+- There is some good information on handling errors, logging and working with other debuggers here: [http://flask.pocoo.org/docs/errorhandling](http://flask.pocoo.org/docs/errorhandling)
+- Learn more about Flask-DebugToolbar here: [http://flask-debugtoolbar.readthedocs.org/en/latest/](http://flask-debugtoolbar.readthedocs.org/en/latest/)
+
+\end{aside}
 
 ## Summary
 

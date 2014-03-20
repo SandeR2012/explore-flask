@@ -1,6 +1,7 @@
 ![Configuration](images/5.png)
 
 # Configuration
+\label{cha:configuration}
 
 When you're learning Flask, configuration seems simple. You just define some variables in config.py and everything works. That simplicity starts to fade away when you have to manage configuration for a production application. You may need to protect secret API keys or use different configurations for different environments (e.g. development and production). There are some advanced Flask features available to help us make this easier.
 
