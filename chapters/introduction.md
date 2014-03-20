@@ -77,7 +77,7 @@ Supplemental information may appear in one of several boxes:
 
 \begin{aside}
 \label{aside:example_warning}
-\heading{**WARNING**}
+\heading{WARNING}
 
 Common pitfalls that could cause major problems may be shown in a warning box.
 \end{aside}
