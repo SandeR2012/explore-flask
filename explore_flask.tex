@@ -1,0 +1,37 @@
+\documentclass[14pt]{extbook} % Edit this line to change the documentclass.
+% Add custom preamble content below.
+% Example commands for using the Polyglossia package with French are
+% included for reference.
+% You may also have to edit config/lang.yml to sync up the HTML/EPUB/MOBI.
+% \usepackage{polyglossia}
+% \setdefaultlanguage{french}
+% \DeclareTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+
+\usepackage{latex_styles/softcover}
+\VerbatimFootnotes % Allows verbatim text in footnotes
+\title{Explore Flask}
+
+\author{Robert Picard}
+\date{}
+
+\begin{document}
+
+\includepdf{images/cover.pdf}
+\frontmatter
+\maketitle
+\tableofcontents
+\mainmatter
+\include{generated_polytex/introduction}
+\include{generated_polytex/conventions}
+\include{generated_polytex/environment}
+\include{generated_polytex/organizing}
+\include{generated_polytex/configuration}
+\include{generated_polytex/views}
+\include{generated_polytex/blueprints}
+\include{generated_polytex/templates}
+\include{generated_polytex/static}
+\include{generated_polytex/storing}
+\include{generated_polytex/forms}
+\include{generated_polytex/users}
+\include{generated_polytex/deployment}
+\end{document}
