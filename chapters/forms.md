@@ -1,4 +1,5 @@
 # Handling forms
+\label{ch:forms}
 
 The form is the basic element that lets users interact with your web application. Flask alone doesn't do anything to help you handle forms, but the Flask-WTF extension lets us use the popular WTForms package in our Flask applications. This package makes defining forms and handling submissions easy.
 

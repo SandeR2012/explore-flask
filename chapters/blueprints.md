@@ -1,6 +1,7 @@
 ![Blueprints](images/7.png)
 
 # Blueprints
+\label{ch:blueprints}
 
 ## What is a blueprint?
 
