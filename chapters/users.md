@@ -109,6 +109,7 @@ This view is a simple form view. We just add the `try ... except` bit at the beg
 { NOTE: You can use very similar methods to implement an email reset feature. Just send a confirmation link to the new email address with a token that contains both the old and the new addresses. If the token is valid, update the old address with the new one. }
 
 ## Storing passwords
+\label{sec:passwords}
 
 Rule number one of handling users is to hash passwords with the Bcrypt algorithm before storing them. You never store passwords in plain text. It's a massive security issue and it's unfair to your users. All of the hard work has already been done and abstracted away for us, so there's no excuse for not following the best practices here.
 

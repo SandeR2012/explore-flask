@@ -3,42 +3,60 @@
 # Configuration
 \label{cha:configuration}
 
-When you're learning Flask, configuration seems simple. You just define some variables in config.py and everything works. That simplicity starts to fade away when you have to manage configuration for a production application. You may need to protect secret API keys or use different configurations for different environments (e.g. development and production). There are some advanced Flask features available to help us make this easier.
+When you're learning Flask, configuration seems simple. You just define some variables in _config.py_ and everything works. That simplicity starts to fade away when you have to manage configuration for a production application. You may need to protect secret API keys or use different configurations for different environments (e.g. development and production environments). In this chapter we'll go voer some advanced Flask features that makes this managing configuration easier.
 
 ## The simple case
 
-A simple application may not need any of these complicated features. You may just need to put _config.py_ in the root of your repository and load it in _app.py_ or _yourapp/__init__.py_
+A simple application may not need any of these complicated features. You may just need to put _config.py_ in the root of your repository and load it in _app.py_ or _yourapp/\_\_init\_\_.py_
 
- _config.py_  should contain one variable assignment per line. Once _config.py_ is loaded later, the configuration variables will be accessible via the `app.config` dictionary, e.g. `app.config[“DEBUG”]`. Here’s an example of a typical _config.py_ file for a small project:
+ The _config.py_ file should contain one variable assignment per line. When your app is initialized, the variablse in _config.py_ are configure Flask and it's extensions and are accessible via the `app.config` dictionary -- e.g. `app.config[“DEBUG”]`.
 
-```
+\begin{codelisting}
+\label{code:config}
+\codecaption{A typical \textit{config.py} file for a small project}
+```python
 DEBUG = True # Turns on debugging features in Flask
-BCRYPT_LEVEL = 13 # Configuration for the Flask-Bcrypt extension
+BCRYPT_LEVEL = 12 # Configuration for the Flask-Bcrypt extension
 MAIL_FROM_EMAIL = "robert@example.com" # For use in application emails
 ```
+\end{codelisting}
 
-There are some built-in configuration variables like `DEBUG`. There are also some configuration variables for extensions that you may be using like `BCRYPT_LEVEL` for the Flask-Bcrypt extension, used for password hashing. You can even define your own configuration variables for use throughout the application. In this example, I would use `app.config[“MAIL_FROM_EMAIL”]` whenever I needed the default “from” address for a transactional email (e.g. password resets). It makes it easy to change that later on.
+Configuration variables can be used by Flask, extensions or you. In this example, we could use `app.config[“MAIL_FROM_EMAIL”]` whenever we needed the default “from” address for a transactional email  -- e.g. password resets. Putting that information in a configuration variable makes it easy to change it in the future.
 
-To load these configuration variables into the application, I would use `app.config.from_object()` in _app.py_ for a single-module application or _yourapp/__init__.py_ for a package based application. In either case, the code looks something like this:
-
-```
+\begin{codelisting}
+\label{code:load_config}
+\codecaption{An example of how \textit{config.py} is loaded}
+```python
+# app.py or app/__init__.py
 from flask import Flask
 
 app = Flask(__name__)
 app.config.from_object('config')
-# Now I can access the configuration variables via app.config["VAR_NAME"].
+
+# Now we can access the configuration variables via app.config["VAR_NAME"].
 ```
+\end{codelisting}
 
-### Some important configuration variables
+\begin{table}
+\caption{Some common variables found in Flask applications \label{table:variables}}
+\begin{tabular}{|l|l|l|}
 
-{ THIS INFORMATION SHOULD BE IN A TABLE }
+  \hline
+  Variable & Description & Default \\
+  \hline
+  DEBUG & Gives you some handy tools for debugging errors. This includes a web-based stack trace and interactive Python console for errors. & Should be set to \texttt{True} in development and \texttt{False} in production. \\
+  SECRET\_KEY & This is a secret key that is used by Flask to sign cookies. It's also used by extensions like Flask-Bcrypt. You should define this in your instance folder to keep it out of version control. You can read more about instance folders in the next section. & This should be a complex random value. \\
+  BCRYPT\_LEVEL & If you’re using Flask-Bcrypt to hash user passwords, you’ll need to specify the number of “rounds” that the algorithm executes in hashing a password. If you aren't using Flask-Bcrypt, you should probably start. The more rounds used to hash a password, the longer it'll take for an attacker to guess a password given the hash. The number of rounds should increase over time as computing power increases. & Section~\ref{sec:passwords} covers some of the best practices for using Bcrypt in your Flask application. \\
+  \hline
+\end{tabular}
+\end{table}
 
-* VARIABLE : DESCRIPTION : DEFAULT VALUE
-* DEBUG : Gives you some handy tools for debugging errors. This includes a web-based stack trace and Python console when an request results in an application error. : Should be set to True in development and False in production.
-* SECRET_KEY : This is a secret key that is used by Flask to sign cookies and other things. You should define this in your instance folder to keep it out of version control. You can read more about instance folders in the next section. : This should be a complex random value.
-* BCRYPT_LEVEL : If you’re using Flask-Bcrypt to hash user passwords (if you’re not, start now), you’ll need to specify the number of “rounds” that the algorithm executes in hashing a password. The more rounds used in hashing, the longer it will be for a computer hash (and importantly, to crack) the password. The number of rounds used should increase over time as computing power increases. : As a rule of thumb, take the last two digits of the current year and use that value. For example, I’m writing this in 2013, so I’m currently using a `BCRYPT_LEVEL = 13`. You’ll often hear that you should choose the highest possible level before you application becomes too slow to bear. That’s true, but it’s tough to translate into a number to use. Feel free to play around with higher numbers, but you should be alright with that rule of thumb.
+\begin{aside}
+\label{aside:debug_warning}
+\heading{WARNING}
 
-{ WARNING: Make sure DEBUG = False in production. Leaving it on will allow users to run arbitrary Python code on your server. }
+Make sure \texttt{DEBUG} is set to \texttt{False} in production. Leaving it on will allow users to run arbitrary Python code on your server.
+\end{aside}
 
 ## Instance folder
 
