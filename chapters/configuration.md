@@ -60,10 +60,11 @@ Make sure \texttt{DEBUG} is set to \texttt{False} in production. Leaving it on w
 
 ## Instance folder
 
-Sometimes you’ll need to define configuration variables that shouldn’t be shared. For this reason, you’ll want to separate them from the variables in _config.py_ and keep them out of the repository. You may be hiding secrets like database passwords and API keys, or defining variables specific to your current machine. To make this easy, Flask gives us a feature called Instance folders. The instance folder is a subdirectory sits in the repository root and contains a configuration file specifically for this instance of the application. It is not committed to version control.
+Sometimes you’ll need to define configuration variables that contain sensitive information. We’ll want to separate these variables from those in _config.py_ and keep them out of the repository. You may be hiding secrets like database passwords and API keys, or defining variables specific to a given machine. To make this easy, Flask gives us a feature called **instance folders**. The instance folder is a sub-directory of the repository root and contains a configuration file specifically for this instance of the application. We don't want to commit it into version control.
 
-Here’s a simple repository for a Flask application using an instance folder:
-
+\begin{codelisting}
+\label{code:instance_listing}
+\codecaption{An example of a repository with an instance folder}
 ```
 config.py
 requirements.txt
@@ -77,63 +78,82 @@ yourapp/
   templates/
   static/
 ```
+\end{codelisting}
 
 ### Using instance folders
 
-To load the configuration variables defined inside of an instance folder, you can use `app.config.from_pyfile()`. If we set `instance_relative_config=True` when we create our app with the `Flask()` call, `app.config.from_pyfile()` will check for the specified file in the _instance/_ directory.
+To load configuration variables from an instance folder, we use `app.config.from_pyfile()`. If we set `instance_relative_config=True` when we create our app with the `Flask()` call, `app.config.from_pyfile()` will load the specified file from the _instance/_ directory.
 
-```
+\begin{codelisting}
+\label{code:instance_relative}
+\codecaption{Loading configuration variables from an instance folder}
+```python
+# app.py or app/__init__.py
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object('config')
 app.config.from_pyfile('config.py')
 ```
+\end{codelisting}
 
-Now, you can define variables in _instance/config.py_ just like you did in _config.py_. You should also add the instance folder to your version control system’s ignore list. To do this with git, you would save `instance/` on a new line in  _gitignore_.
+Now, we can define variables in _instance/config.py_ just like you did in _config.py_. You should also add the instance folder to your version control system’s ignore list. To do this with Git, you would add `instance/` on a new line in  _.gitignore_.
 
 ### Secret keys
 
-The private nature of the instance folder makes it a great candidate for defining keys that you don't want exposed in version control. These may include your app's secret key or third-party API keys. This is especially important if your application is open source, or might be at some point in the future.
-
-Your _instance/config.py_ file might look something like this:
+The private nature of the instance folder makes it a great candidate for defining keys that you don't want exposed in version control. These may include your app's secret key or third-party API keys. This is especially important if your application is open source, or might be at some point in the future. We usually want other uses and contributors to use their own keys.
 
 { THIS COULD BE A GOOD CHANCE TO ENCODE BACKER NAMES! }
+{ IDEAL SECRET KEY? }
 
-```
-SECRET_KEY = 'ABCDEFG' # This is a bad secret key!
+\begin{codelisting}
+\label{code:instance_eg}
+\codecaption{An example of \textit{instance/config.py} with some secret variables}
+```python
+# instance/config.py
+SECRET_KEY = 'ABCDEFG' # This is a terrible secret key!
 STRIPE_API_KEY = 'yekepirtsaton'
-SQLALCHEMY_DATABASE_URI = "postgresql://username:password@localhost/databasename"
+SQLALCHEMY_DATABASE_URI="postgresql://username:password@localhost/databasename"
 ```
+\end{codelisting}
 
 ### Minor environment-based configuration
 
-If the difference between your production and development environments are pretty minor, you may want to use your instance folder to handle the configuration changes. Variables defined in the instance/config.py file can override the value in config.py. You just need to make the call to `app.config.from_pyfile()` after `app.config.from_object()`.  One way to take advantage of this is to change the way your app is configured on different machines. Your development repository might look like this:
+If the difference between your production and development environments are pretty minor, you may want to use your instance folder to handle the configuration changes. Variables defined in the _instance/config.py_ file can override the value in _config.py_. You just need to make the call to `app.config.from_pyfile()` after `app.config.from_object()`.  One way to take advantage of this is to change the way your app is configured on different machines.
 
-config.py
-```
+\begin{codelisting}
+\label{code:instance_env}
+\codecaption{Using an instance folder to do override your default configuration}
+```python
+# config.py
 DEBUG = False
 SQLALCHEMY_ECHO = False
-```
 
-instance/config.py
-```
+
+# instance/config.py
 DEBUG = True
 SQLALCHEMY_ECHO = True
 ```
 
-Then in production, you would leave these lines out of _instance/config.py_ and it would fall back to the values defined in _config.py_. 
+\end{codelisting}
 
-{ SEE MORE:
-* Read about Flask-SQLAlchemy’s configuration keys here: http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys
-}
+In production, we would leave the variables in Listing~\ref{code:instance_env} out of _instance/config.py_ and it would fall back to the values defined in _config.py_. 
 
-## Configuring from envvar
+\begin{aside}
+\label{aside:instance_links}
+\heading{Related Links}
 
-The instance folder shouldn’t be in version control. This means that you won’t be able to track changes to your instance configurations. That might not be a problem with one or two variables, but if you have a finely tuned configurations for various environments (production, staging, development, etc.) you don’t want to risk losing that. 
+- Read about Flask-SQLAlchemy’s configuration keys here: [http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys](http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys)
 
-Flask gives us the ability to choose a configuration file on the fly based on the value of an environment variable. This means that we can have several configuration files in our repository (and in version control) and always load the right one, depending on the environment.
+\end{aside}
 
-When we’re at the point of having several configuration files in the repository, it’s time to move those files into a `config` package. Here’s what that looks like in a repository:
+## Configuring based on environment variables
 
+The instance folder shouldn’t be in version control. This means that you won’t be able to track changes to your instance configurations. That might not be a problem with one or two variables, but if you have finely tuned configurations for various environments (production, staging, development, etc.) you don’t want to risk losing that. 
+
+Flask gives us the ability to choose a configuration file on load based on the value of an environment variable. This means that we can have several configuration files in our repository and always load the right one. Once we have several configuration files, we can move them to their own `config` directory.
+
+\begin{codelisting}
+\label{code:config_package}
+\codecaption{A repository with a directory for configuration files}
 ```
 requirements.txt
 run.py
@@ -152,42 +172,68 @@ yourapp/
   static/
   templates/
 ```
+\end{codelisting}
 
-In this case we have a few different configuration files:
+In Listing~\ref{code:config_package} we have a few different configuration files.
 
-{ PUT THIS IN A TABLE }
 
-* _config/default.py_ : Default values, to be used for all environments or overridden by individual environments. An example might be setting `DEBUG = False` in _config/default.py_ and `DEBUG = True` in _config/development.py_.
-* _config/development.py_ : Values to be used during development. Here you might specify the URI of a database sitting on localhost.
-* _config/production.py_ : Values to be used in production. Here you might specify the URI for your database server, as opposed to the localhost database URI used for development.
-* _config/staging.py_ : Depending on your deployment process, you may have a staging step where you test changes to your application on a server that simulates a production environment. You’ll probably use a different database, and you may want to alter other configuration values for staging applications.
+\begin{table}
+\caption{Some example configuration files \label{table:config_files}}
 
-To actually use these files in your various environments, you can make a call to `app.config.from_envvar()`:
+\begin{tabular}{|l|l|}
 
-yourapp/__init__.py
-```
+  \hline
+  \textit{config/default.py} & Default values, to be used for all environments or overridden by individual environments. An example might be setting `DEBUG = False` in _config/default.py_ and `DEBUG = True` in _config/development.py_. \\
+  \textit{config/development.py} & Values to be used during development. Here you might specify the URI of a database sitting on localhost. \\
+  \textit{config/production.py} & Values to be used in production. Here you might specify the URI for your database server, as opposed to the localhost database URI used for development. \\
+  \textit{config/staging.py} & Depending on your deployment process, you may have a staging step where you test changes to your application on a server that simulates a production environment. You’ll probably use a different database, and you may want to alter other configuration values for staging applications. \\
+  \hline
+
+\end{tabular}
+\end{table}
+
+To decide which configuration file to load, we'll call `app.config.from_envvar()`.
+
+\begin{codelisting}
+\label{code:load_envvar}
+\codecaption{Loading a configuration file based on an environment variable}
+```python
+# yourapp/__init__.py
+
 app = Flask(__name__, instance_relative_config=True)
+
+# Load the default configuration
 app.config.from_object('config.default')
-app.config.from_pyfile('config.py') # Don't forget our instance folder
+
+# Load the configuration from the instance folder
+app.config.from_pyfile('config.py')
+
+# Load the file specified by the APP_CONFIG_FILE environment variable
+# Variables defined here will override those in the default configuration
 app.config.from_envvar('APP_CONFIG_FILE')
 ```
+\end{codelisting}
 
-`app.config.from_envvar(‘APP_CONFIG_FILE’)` will load the file specified in the environment variable `APP_CONFIG_FILE`. The value of that environment variable should be the full path of a configuration file. 
+The value of the environment variable should be the absolute path to a configuration file. 
 
+How we set this environment variable depends on the platform in which we’re running the app. If we’re running on a regular Linux server, we can set up a shell script that sets our environment variables and runs _run.py_.
 
-How you set this environment variable depends on the platform on which you’re running your app. If you’re running on a regular Linux server, you could set up a shell script that sets the environment variables and runs `run.py`:
+\begin{codelisting}
+\label{code:start_sh}
+\codecaption{A script that can be modified for each environment}
+```bash
+# start.sh
 
-start.sh
-```
 APP_CONFIG_FILE=/var/www/yourapp/config/production.py
 python run.py
 ```
+\end{codelisting}
 
-If you’re using Heroku, you’ll want to set the environment variables with the Heroku tools. The same idea applies to other “PaaS” platforms.
+_start.sh_ is unique to each environment, so it should be left out of version control. On Heroku, we'll want to set the environment variables with the Heroku tools. The same idea applies to other “PaaS” platforms.
 
 ## Summary
 
 * A simple app may only need one configuration file: _config.py_.
 * Instance folders can help us hide secret configuration values.
 * Instance folders can be used to alter an application’s configuration for a specific environment.
-* We should use environment variables and `app.config.from_envvar()` for complicated, environment-based configurations.
+* We should use environment variables and `app.config.from_envvar()` for more complicated environment-based configurations.
