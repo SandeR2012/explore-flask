@@ -3,6 +3,7 @@ frontmatter:
 maketitle
 tableofcontents
 mainmatter:
+info.md
 introduction.md
 conventions.md
 environment.md
