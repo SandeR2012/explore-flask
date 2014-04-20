@@ -148,20 +148,14 @@ def check_expired(func):
 ```
 \end{codelisting}
 
-\begin{table}
-\caption{The basic components of a Flask application \label{table:files}}
+---
 
-\begin{tabular}{|l|l|}
-    
-    \hline
-    10 & When a function is decorated with \texttt{@check_expired} , \texttt{check_expired()} is called and the decorated function is passed as a parameter. \\
-    11 & @wraps is a decorator that tells Python that the function \texttt{decorated\_function()} wraps around the view function \texttt{func()}. This makes the behavior of the functions a little more natural. See Box~\ref{aside:custom_links} \\
-    12 & \texttt{decorated\_function} will get all of the args and kwargs that were passed to the original view function \textt{func()}. This is where we check if the user’s account is expired. If it is, we’ll flash a message and redirect them to the billing page. \\
-    16 & Now that we've done what we wanted to do, we run the decorated view function \texttt{func()} with its original arguments. \\
-    \hline
 
-\end{tabular}
-\end{table}
+| 10 | When a function is decorated with `@check_expired` , `check_expired()` is called and the decorated function is passed as a parameter. |
+| 11 | `@wraps` is a decorator that tells Python that the function `decorated_function()` wraps around the view function `func()`. This makes the behavior of the functions a little more natural. See Box~\ref{aside:custom_links} |
+| 12 | `decorated_function` will get all of the args and kwargs that were passed to the original view function `func()`. This is where we check if the user’s account is expired. If it is, we’ll flash a message and redirect them to the billing page. |
+| 16 | Now that we've done what we wanted to do, we run the decorated view function `func()` with its original arguments. |
+
 
 When we stack decorators, the topmost decorator will run first, then call the next function in line: either the view function or the next decorator. The decorator syntax is just a little syntactic sugar.
 

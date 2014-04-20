@@ -12,7 +12,7 @@ Virtualenv also lets you use different versions of the same package for differen
 
 When using virtualenv, you'll generally have only a few Python packages installed globally on your system. One of these will be virtualenv itself. You can install the `virtualenv` package with Pip.
 
-Once you have virtualenv on your system, you can start creating virtual environments. To do so, navigate to your project directory and run the `virtualenv` command. It takes one argument, which is the deistination directory of the virtual environment. Listing~\ref{code:venv_create} shows what this looks like.
+Once you have virtualenv on your system, you can start creating virtual environments. Navigate to your project directory and run the `virtualenv` command. It takes one argument, which is the deistination directory of the virtual environment. Listing~\ref{code:venv_create} shows what this looks like.
 
 \begin{codelisting}
 \label{code:venv_create}
@@ -65,7 +65,7 @@ $
 
 \end{aside}
 
-## Manage virtual environments with virtualenvwrapper
+## virtualenvwrapper
 
 virtualenvwrapper is a package used to manage the virtual environments created by virtualenv. I didn't want to mention this tool until you had seen the basics of virtualenv so that you understand what it's improving upon and understand why you should use it.
 
@@ -122,6 +122,8 @@ _requirements.txt_ is a text file used by many Flask applications to list all of
 ```
 \end{codelisting}
 
+---
+
 \begin{codelisting}
 \label{code:pip_install}
 \codecaption{Installing dependencies from \textit{requirements.txt}}
@@ -139,7 +141,7 @@ Cleaning up...
 
 ### Manually tracking dependencies
 
-As your project grows, you may find that certain packages listed by `pip freeze` aren’t actually needed to run the application. You’ll have packages that are installed for development only. `pip freeze` doesn’t discriminate between the two, it just lists the packages that are currently installed. As a result, you may want to manually track your depencies as you add them. You can separate those packages needed to run your application and those needed to develop your application into _require_run.txt_ and _require_dev.txt_ respectively.
+As your project grows, you may find that certain packages listed by `pip \-freeze` aren’t actually needed to run the application. You’ll have packages that are installed for development only. `pip freeze` doesn’t discriminate between the two, it just lists the packages that are currently installed. As a result, you may want to manually track your depencies as you add them. You can separate those packages needed to run your application and those needed to develop your application into _require_run.txt_ and _require_dev.txt_ respectively.
 
 
 ## Version control

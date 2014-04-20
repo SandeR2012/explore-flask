@@ -112,5 +112,5 @@ I may provide some links with more information on a given topic in a "see also" 
 * Summaries will appear as concise lists of takeaways from the chapters.
 
 [^psf_2v3]: The Python wiki page on the subject: [http://wiki.python.org/moin/Python2orPython3](http://wiki.python.org/moin/Python2orPython3)
-[^armin_2v3]: The recording of my conversation with Armin Ronacher: [https://www.youtube.com/watch?feature=player_detailpage&v=fs20qdvm0K4#t=190](https://www.youtube.com/watch?feature=player_detailpage&v=fs20qdvm0K4#t=190)
+[^armin_2v3]: The recording of my conversation with Armin Ronacher: [https://www.youtube.com/watch?\-feature=player_detailpage&v=fs20qdvm0K4#t=190](https://www.youtube.com/watch?feature=player_detailpage&v=fs20qdvm0K4#t=190)
 [^example_footnote]: See, it _must_ be true!
