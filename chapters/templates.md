@@ -236,7 +236,7 @@ In Listing~\ref{code:jinja_filter1}, the `title` filter will take `article.title
 \label{aside:}
 \heading{Related Links}
 
-There are loads of built-in filters like `title`. See the full list here: [http://jinja.pocoo.org/docs/templates/#builtin-filters](http://jinja.pocoo.org/docs/templates/#builtin-filters)
+There are loads of built-in filters like `title`. See the full list here: [http://ji\-nja.pocoo.org/docs/templates/#builtin-filters](http://jinja.pocoo.org/docs/templates/#builtin-filters)
 
 \end{aside}
 

@@ -18,8 +18,8 @@ Let's define some of the terms that we'll run into in this chapter.
 \label{aside:def_links}
 \heading{Related Links}
 
-- Read more about Python modules here: [http://docs.python.org/2/tutorial/modules.html](http://docs.python.org/2/tutorial/modules.html)
-- That same page has a section on packages as well: [http://docs.python.org/2/tutorial/modules.html#packages](http://docs.python.org/2/tutorial/modules.html#packages)
+- Read more about Python modules here: [http://docs.python.org/2/tut\-orial/modules.html](http://docs.python.org/2/tutorial/modules.html)
+- That same page has a section on packages as well: [http://docs.pyth\-on.org/2/tutorial/modules.html#packages](http://docs.python.org/2/tutorial/modules.html#packages)
 
 \end{aside}
 

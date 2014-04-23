@@ -144,7 +144,7 @@ In production, we would leave the variables in Listing~\ref{code:instance_env} o
 \label{aside:instance_links}
 \heading{Related Links}
 
-- Read about Flask-SQLAlchemy's configuration keys here: [http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys](http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys)
+- Read about Flask-SQLAlchemy's configuration keys here: [http://pyth\-onhosted.org/Flask-SQLAlchemy/config.html#configuration-keys](http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys)
 
 \end{aside}
 

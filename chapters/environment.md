@@ -206,9 +206,9 @@ Flask-DebugToolbar is another great tool for debugging problems with your applic
 \label{aside:debug_links}
 \heading{Related Links}
 
-- Take a look at the quick start section on debug mode: [http://flask.pocoo.org/docs/quickstart/#debug-mode](http://flask.pocoo.org/docs/quickstart/#debug-mode)
+- Take a look at the quick start section on debug mode: [http://flask.po\-coo.org/docs/quickstart/#debug-mode](http://flask.pocoo.org/docs/quickstart/#debug-mode)
 - There is some good information on handling errors, logging and working with other debuggers here: [http://flask.pocoo.org/docs/errorhandling](http://flask.pocoo.org/docs/errorhandling)
-- Learn more about Flask-DebugToolbar here: [http://flask-debugtoolbar.readthedocs.org/en/latest/](http://flask-debugtoolbar.readthedocs.org/en/latest/)
+- Learn more about Flask-DebugToolbar here: [http://flask-debugtoolbar.read\-thedocs.org/en/latest/](http://flask-debugtoolbar.readthedocs.org/en/latest/)
 
 \end{aside}
 

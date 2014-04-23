@@ -15,7 +15,7 @@ The killer use-case for blueprints is to organize our application into distinct 
 \label{aside:whybp_links}
 \heading{Related Links}
 
-- "Why Blueprints" from the Flask docs: [http://flask.pocoo.org/docs/blueprints/#why-blueprints](http://flask.pocoo.org/docs/blueprints/#why-blueprints)
+- "Why Blueprints" from the Flask docs: [http://flask.pocoo.org/docs/blue\-prints/#why-blueprints](http://flask.pocoo.org/docs/blueprints/#why-blueprints)
 
 \end{aside}
 
@@ -54,7 +54,7 @@ With the exception of *yourapp/views/\_\_init\_\_.py*, each of the _.py_ files i
 \label{aside:}
 \heading{Related Links}
 
-- At the time of writing this, the Flask website at [http://flask.pocoo.org](http://flask.pocoo.org) uses this structure: [https://github.com/mitsuhiko/flask/tree/website/flask_website](https://github.com/mitsuhiko/flask/tree/website/flask_website)
+- At the time of writing this, the Flask website at [http://flask.pocoo.org](http://flask.pocoo.org) uses this structure: [https://github.com/mitsuhiko/flask/tree/website/flask_we\-bsite](https://github.com/mitsuhiko/flask/tree/website/flask_website)
 
 \end{aside}
 
@@ -303,7 +303,7 @@ We're using the `g` object to store the profile owner and `g` is available in th
 \label{aside:}
 \heading{Related Links}
 
-- The Flask documentation has a great tutorial on using prefixes for internationalizing your URLs: [http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls](http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls)
+- The Flask documentation has a great tutorial on using prefixes for internationalizing your URLs: [http://flask.pocoo.org/docs/patterns/urlpro\-cessors/#internationalized-blueprint-urls](http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls)
 
 \end{aside}
 

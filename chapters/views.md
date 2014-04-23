@@ -114,7 +114,7 @@ Flask-Cache also lets us **memoize** functions — or cache the result of a func
 \label{aside:cache_links}
 \heading{Related Links}
 
-- The Redis official site: [http://redis.io/](http://redis.io/)
+- Official Redis site: [http://redis.io/](http://redis.io/)
 - Flask-Cache docs: [http://pythonhosted.org/Flask-Cache/](http://pythonhosted.org/Flask-Cache/)
 
 \end{aside}
