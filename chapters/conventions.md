@@ -2,11 +2,11 @@
 
 # Coding conventions
 
-There are a number of conventions in the Python community to guide the way you format your code. If you’ve been developing with Python for a while, then you might already be familiar with some of these conventions. I’ll keep things brief and leave a few URLs where you can find more information if you haven’t come across these topics before.
+There are a number of conventions in the Python community to guide the way you format your code. If you've been developing with Python for a while, then you might already be familiar with some of these conventions. I'll keep things brief and leave a few URLs where you can find more information if you haven't come across these topics before.
 
-## Let’s have a PEP rally!
+## Let's have a PEP rally!
 
-A **PEP** is a "Python Enhancement Proposal." These proposals are indexed and hosted at python.org. In the index, PEPs are grouped into a number of categories, including meta-PEPs, which are more informational than technical. The technical PEPs, on the other hand, often describe things like improvements to Python’s internals.
+A **PEP** is a "Python Enhancement Proposal." These proposals are indexed and hosted at python.org. In the index, PEPs are grouped into a number of categories, including meta-PEPs, which are more informational than technical. The technical PEPs, on the other hand, often describe things like improvements to Python's internals.
 
 There are a few PEPs, like PEP 8 and PEP 257 that are meant to guide the way we write our code. PEP 8 contains coding style guidelines. PEP 257 contains guidelines for docstrings, the generally accepted method of documenting code.
 
@@ -14,11 +14,11 @@ There are a few PEPs, like PEP 8 and PEP 257 that are meant to guide the way we 
 
 PEP 8 is the official style guide for Python code. I recommend that you read it and apply its recommendations to your Flask projects (and all of your other Python code). Your code will be much more approachable when it starts growing to many files with hundreds, or thousands, of lines of code. The PEP 8 recommendations are all about having more readable code. Plus, if your project is going to be open source, potential contributors will likely expect and be comfortable working on code written with PEP 8 in mind.
 
-One particularly important recommendation is to use 4 spaces per indentation level. No real tabs. If you break this convention, it’ll be a burden on you and other developers when switching between projects. That sort of inconsistency is a pain in any language, but white-space is especially important in Python, so switching between real tabs and spaces could result in any number of errors that are a hassle to debug.
+One particularly important recommendation is to use 4 spaces per indentation level. No real tabs. If you break this convention, it'll be a burden on you and other developers when switching between projects. That sort of inconsistency is a pain in any language, but white-space is especially important in Python, so switching between real tabs and spaces could result in any number of errors that are a hassle to debug.
 
 ### PEP 257: Docstring Conventions
 
-PEP 257 covers another Python standard: **docstrings**. You can read the definition and recommendations in the PEP itself, but here’s an example to give you an idea of what a docstring looks like:
+PEP 257 covers another Python standard: **docstrings**. You can read the definition and recommendations in the PEP itself, but here's an example to give you an idea of what a docstring looks like:
 
 \begin{codelisting}
 \label{code:pep257}

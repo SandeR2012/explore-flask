@@ -31,7 +31,7 @@ The Jinja documentation does a great job of explaining the syntax and features o
 \begin{quote}
 There are two kinds of delimiters. `{% ... %}` and `{{ ... }}`. The first one is used to execute statements such as for-loops or assign values, the latter prints the result of the expression to the template.
 
---- Jinja Template Designer Documentation [http://jinja.pocoo.org/docs/templates/#synopsis](http://jinja.pocoo.org/docs/templates/#synopsis)
+--- Jinja Template Designer Documentation [http://jinja.pocoo.org\-/docs/templates/#synopsis](http://jinja.pocoo.org/docs/templates/#synopsis)
 \end{quote}
 
 ## How to organize templates
@@ -74,13 +74,13 @@ templates/
 
 
 
-The structure of the _templates_ directory parallels the structure of our routes. The template for the route _myapp.com/admin/analytics_ is _templates/admin/analytics.html_. There are also some extra templates in there that won't be rendered directly. The _layout.html_ files are meant to be inherited by the other templates.
+The structure of the _templates_ directory parallels the structure of our routes. The template for the route _myapp.com/admin/analytics_ is _templates/admin/an\-alytics.html_. There are also some extra templates in there that won't be rendered directly. The _layout.html_ files are meant to be inherited by the other templates.
 
 ## Inheritance
 
-Much like Batman’s backstory, a well organized templates directory relies heavily on inheritance. The **parent template** usually defines a generalized structure that all of the **child templates** will work within. In our example, _layout.html_ is a parent template and the other _.html_ files are child templates.
+Much like Batman's backstory, a well organized templates directory relies heavily on inheritance. The **parent template** usually defines a generalized structure that all of the **child templates** will work within. In our example, _layout.html_ is a parent template and the other _.html_ files are child templates.
 
-You’ll generally have one top-level _layout.html_ that defines the general layout for your application and one for each section of your site. If you take a look at the directory above, you’ll see that there is a top-level _myapp/templates/layout.html_ as well as _myapp/templates/profile/layout.html_ and _myapp/templates/admin/layout.html_. The last two files inherit and modify the first.
+You'll generally have one top-level _layout.html_ that defines the general layout for your application and one for each section of your site. If you take a look at the directory above, you'll see that there is a top-level _myapp/templates/lay\-out.html_ as well as _myapp/templates/profile/layout.html_ and _myapp/templat\-es/admin/layout.html_. The last two files inherit and modify the first.
 
 Inheritance is implemented with the `{% extends %}` and `{% block %}` tags. In the parent template, we can define blocks which will be populated by child templates.
 
@@ -133,7 +133,7 @@ The `super()` function lets us include whatever was inside the block in the pare
 
 ## Creating macros
 
-We can implement DRY (Don't Repeat Yourself) principles in our templates by abstracting snippets of code that appear over and over into **macros**. If we're working on some HTML for our app's navigation, we might want to give a different class to the “active” link (i.e. the link to the current page). Without macros we'd end up with a block of `if`/`else` statements that check each link to find the active one.
+We can implement DRY (Don't Repeat Yourself) principles in our templates by abstracting snippets of code that appear over and over into **macros**. If we're working on some HTML for our app's navigation, we might want to give a different class to the "active" link (i.e. the link to the current page). Without macros we'd end up with a block of `if`/`else` statements that check each link to find the active one.
 
 Macros provide a way to modularize that code; they work like functions. Let's look at how we'd mark the active link using a macro.
 
@@ -166,7 +166,7 @@ Macros provide a way to modularize that code; they work like functions. Let's lo
 
 
 
-What we are doing in Listing~\ref{code:macro1} is calling an undefined macro — `nav_link` — and passing it two parameters: the target endpoint (i.e. the function name for the target view) and the text we want to show.
+What we are doing in Listing~\ref{code:macro1} is calling an undefined macro — `nav_\-link` — and passing it two parameters: the target endpoint (i.e. the function name for the target view) and the text we want to show.
 
 \begin{aside}
 \label{aside:}
@@ -207,7 +207,7 @@ Now it's time time to define the macro that we used in Listing~\ref{code:macro1}
 ```
 \end{codelisting}
 
-Now we've defined the macro in _myapp/templates/macros.html_. What we're doing in Listing~\ref{code:macro2} is using Flask's `request` object — which is available in the Jinja context by default — to check whether or not the current request was routed to the endpoint passed to `nav_link`. If it was, than we're currently on that page, and we can mark it as active.
+Now we've defined the macro in _myapp/templates/macros.html_. In Listing~\ref{code:macro2} we're using Flask's `request` object — which is available in the Jinja context by default — to check whether or not the current request was routed to the endpoint passed to `nav_link`. If it was, than we're currently on that page, and we can mark it as active.
 
 \begin{aside}
 \label{aside:}
@@ -240,17 +240,17 @@ There are loads of built-in filters like `title`. See the full list here: [http:
 
 \end{aside}
 
-We can define our own filters for use in our Jinja templates. As an example, we’ll implement a simple `caps` filter to capitalize all of the letters in a string.
+We can define our own filters for use in our Jinja templates. As an example, we'll implement a simple `caps` filter to capitalize all of the letters in a string.
 
 \begin{aside}
 \label{aside:}
 \heading{A note on redundancy}
 
-Jinja already has an `upper` filter that does this, and a `capitalize` filter that capitalizes the first character and lowercases the rest. These also handle unicode conversion, but we’ll keep our example simple to focus on the concept at hand.
+Jinja already has an `upper` filter that does this, and a `capitalize` filter that capitalizes the first character and lowercases the rest. These also handle unicode conversion, but we'll keep our example simple to focus on the concept at hand.
 
 \end{aside}
 
-We’re going to define our filter in a module located at _myapp/util/filters.py_. This gives us a `util` package in which to put other miscellaneous modules.
+We're going to define our filter in a module located at _myapp/util/filters.py_. This gives us a `util` package in which to put other miscellaneous modules.
 
 \begin{codelisting}
 \label{code:jinja_filter2}
@@ -280,7 +280,7 @@ def caps(text):
 ```
 \end{codelisting}
 
-Now we can call `make_caps` in the template rather than `caps`:  `{{ "hello world!"|make_caps }}`.
+Now we can call `make_caps` in the template rather than `caps`:  `{{ "he\-llo world!"|make_caps }}`.
 
 To make our filter available in the templates, we just need to import it in our top-level *\_\_init.py\_\_*.
 

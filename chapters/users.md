@@ -14,7 +14,7 @@ In this chapter I'm going to assume that you're using SQLAlchemy models and WTFo
 
 When a new user gives us their email, we generally want to confirm that they gave us the right one. Once we've made that confirmation, we can confidently send password reset links and other sensitive information to our users without wondering who is on the receiving end.
 
-One of the most common patterns for confirming emails is to send a password reset link with a unique URL that, when visited, confirms that user's email address. For example, john@gmail.com signs up at our application. We register him in the database with an `email_confirmed` column set to `False` and fire off an email to john@gmail.com with a unique URL. This URL usually contains a unique token, e.g. _http://myapp.com/accounts/confirm/kj3kjhj3hj3_. When John gets that email, he clicks the link. Our app sees the token, knows which email to confirm and sets John's `email_confirmed` column to `True`.
+One of the most common patterns for confirming emails is to send a password reset link with a unique URL that, when visited, confirms that user's email address. For example, john@gmail.com signs up at our application. We register him in the database with an `email_confirmed` column set to `False` and fire off an email to john@gmail.com with a unique URL. This URL usually contains a unique token, e.g. _http://myapp.com/accounts/confirm\-/Q2hhZCBDYXRsZXR0IHJvY2tzIG15IHNvY2tz_. When John gets that email, he clicks the link. Our app sees the token, knows which email to confirm and sets John's `email_confirmed` column to `Tr\-ue`.
 
 How do we know which email to confirm with a given token? One way would be to store the token in the database when it is created and check that table when we receive the confirmation request. That's a lot of overhead and, lucky for us, it's unnecessary.
 
@@ -149,7 +149,7 @@ Rule number one of handling users is to hash passwords with the Bcrypt (or scryp
 \label{aside:}
 \heading{Related Links}
 
-- OWASP is one of the industry's most trusted source for information regarding web application security. Take a look at some of their recommendations for secure coding here: [https://www.owasp.org/index.php/Secure_Coding_Cheat_Sheet#Password_Storage](https://www.owasp.org/index.php/Secure_Coding_Cheat_Sheet#Password_Storage)
+- OWASP is one of the industry's most trusted source for information regarding web application security. Take a look at some of their recommendations for secure coding here: [https://www.owasp.org/index.php/Secure_Cod\-ing_Cheat_Sheet#Password_Storage](https://www.owasp.org/index.php/Secure_Coding_Cheat_Sheet#Password_Storage)
 
 \end{aside}
 

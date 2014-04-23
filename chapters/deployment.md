@@ -167,7 +167,7 @@ If we run Gunicorn like we have in the listings, we won't be able to access it f
 
 A reverse proxy handles public HTTP requests, sends them back to Gunicorn and gives the response back to the requesting client. Nginx can be used very effectively as a reverse proxy and Gunicorn "strongly advises" that we use it.
 
-To configure Nginx as a reverse proxy to a Gunicorn server running on 127.0.0.1:8000, we can create a file for our app: _/etc/nginx/sites-available/exploreflask.com_.
+To configure Nginx as a reverse proxy to a Gunicorn server running on 127.0.0.1:8000, we can create a file for our app: _/etc/nginx/sites-available/expl\-oreflask.com_.
 
 \begin{codelisting}
 \label{code:}
@@ -253,7 +253,7 @@ def index():
 \label{aside:}
 \heading{Related Links}
 
-- Read more about ProxyFix in the Werkzeug docs: [http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix](http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix)
+- Read more about ProxyFix in the Werkzeug docs: [http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.con\-trib.fixers.ProxyFix](http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix)
 
 \end{aside}
 

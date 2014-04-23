@@ -2,13 +2,13 @@
 
 # Environment
 
-Your application is probably going to require a lot of software to function properly. If it doesn’t at least require the Flask package, you may be reading the wrong book. Your application’s **environment** is essentially all of the things that need to be around when it runs. Lucky for us, there are a number of things that we can do to make managing our environment much less complicated.
+Your application is probably going to require a lot of software to function properly. If it doesn't at least require the Flask package, you may be reading the wrong book. Your application's **environment** is essentially all of the things that need to be around when it runs. Lucky for us, there are a number of things that we can do to make managing our environment much less complicated.
 
 ## Use virtualenv to manage your environment
 
 virtualenv is a tool for isolating your application in what is called a **virtual environment**. A virtual environment is a directory that contains the software on which your application depends. A virtual environment also changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application. This makes it easy to specify which Python binary to use and which dependencies we want to have available on a per project basis. 
 
-Virtualenv also lets you use different versions of the same package for different projects. This flexibility may be important if you’re working on an older system with several projects that have different version requirements.
+Virtualenv also lets you use different versions of the same package for different projects. This flexibility may be important if you're working on an older system with several projects that have different version requirements.
 
 When using virtualenv, you'll generally have only a few Python packages installed globally on your system. One of these will be virtualenv itself. You can install the `virtualenv` package with Pip.
 
@@ -69,7 +69,7 @@ $
 
 virtualenvwrapper is a package used to manage the virtual environments created by virtualenv. I didn't want to mention this tool until you had seen the basics of virtualenv so that you understand what it's improving upon and understand why you should use it.
 
-That virtual environment directory created in Listing~\ref{code:venv_create} adds clutter to your project repository. You only interact with it directly when activating the virtual environment and it shouldn’t be in version control, so there's no need to have it in there. The solution is to use virtualenvwrapper. This package keeps all of your virtual environments out of the way in a single directory, usually _~/.virtualenvs/_ by default.
+That virtual environment directory created in Listing~\ref{code:venv_create} adds clutter to your project repository. You only interact with it directly when activating the virtual environment and it shouldn't be in version control, so there's no need to have it in there. The solution is to use virtualenvwrapper. This package keeps all of your virtual environments out of the way in a single directory, usually _~/.virtualenvs/_ by default.
 
 To install virtualenvwrapper, follow the instructions in the documentation. See Box~\ref{aside:vwrap_docs} for that link.
 
@@ -81,7 +81,7 @@ Make sure that you've deactivated all virtual environments before installing vir
 
 \end{aside}
 
-Now, instead of running `virtualenv` to create an environment, you’ll run `mkvirtualenv`:
+Now, instead of running `virtualenv` to create an environment, you'll run `mkvirtualenv`:
 
 \begin{codelisting}
 \label{code:vwrap_create}
@@ -108,7 +108,7 @@ Installing pip..................[...].....done.
 
 ## Keeping track of dependencies
 
-As a project grows, you’ll find that the list of dependencies grows with it. It’s not uncommon to need dozens of Python packages installed to run a Flask application. The easiest way to manage these is with a simple text file. Pip can generate a text file listing all installed packages. It can also read in this list to install each of them on a new system, or in a freshly minted environment.
+As a project grows, you'll find that the list of dependencies grows with it. It's not uncommon to need dozens of Python packages installed to run a Flask application. The easiest way to manage these is with a simple text file. Pip can generate a text file listing all installed packages. It can also read in this list to install each of them on a new system, or in a freshly minted environment.
 
 ### pip freeze
 
@@ -141,24 +141,24 @@ Cleaning up...
 
 ### Manually tracking dependencies
 
-As your project grows, you may find that certain packages listed by `pip \-freeze` aren’t actually needed to run the application. You’ll have packages that are installed for development only. `pip freeze` doesn’t discriminate between the two, it just lists the packages that are currently installed. As a result, you may want to manually track your depencies as you add them. You can separate those packages needed to run your application and those needed to develop your application into _require_run.txt_ and _require_dev.txt_ respectively.
+As your project grows, you may find that certain packages listed by `pip \-freeze` aren't actually needed to run the application. You'll have packages that are installed for development only. `pip freeze` doesn't discriminate between the two, it just lists the packages that are currently installed. As a result, you may want to manually track your depencies as you add them. You can separate those packages needed to run your application and those needed to develop your application into _require_run.txt_ and _require_dev.txt_ respectively.
 
 
 ## Version control
 
-Pick a version control system and use it. I recommend Git. From what I've seen, Git is the most popular choice for new projects these days. Being able to delete code without worrying about making an irreversible mistake is invaluable. You’ll be able to keep your project free of those massive blocks of commented out code, because you can delete it now and revert that change later should the need arise. Plus, you’ll have backup copies of your entire project on GitHub, Bitbucket or your own Gitolite server.
+Pick a version control system and use it. I recommend Git. From what I've seen, Git is the most popular choice for new projects these days. Being able to delete code without worrying about making an irreversible mistake is invaluable. You'll be able to keep your project free of those massive blocks of commented out code, because you can delete it now and revert that change later should the need arise. Plus, you'll have backup copies of your entire project on GitHub, Bitbucket or your own Gitolite server.
 
 ### What to keep out of version control
 
-I usually keep a file out of version control for one of two reasons. Either it’s clutter, or it’s a secret. Compiled _.pyc_ files and virtual environments --- if you’re not using virtualenvwrapper for some reason --- are examples of clutter. They don’t need to be in version control because they can be recreated from the _.py_ files and your _requirements.txt_ files respectively.
+I usually keep a file out of version control for one of two reasons. Either it's clutter, or it's a secret. Compiled _.pyc_ files and virtual environments --- if you're not using virtualenvwrapper for some reason --- are examples of clutter. They don't need to be in version control because they can be recreated from the _.py_ files and your _requirements.txt_ files respectively.
 
-API keys, application secret keys and database credentials are examples of secrets. They shouldn’t be in version control because their exposure would be a massive breach of security.
+API keys, application secret keys and database credentials are examples of secrets. They shouldn't be in version control because their exposure would be a massive breach of security.
 
 \begin{aside}
 \label{aside:security}
 \heading{A note on security}
 
-When making security related decisions, I always like to assume that my repository will become public at some point. This means keeping secrets out and never assuming that a security hole won’t be found because, "Who’s going to guess that they can do that?" This kind of assumption is known as security by obscurity and it's a bad policy to rely on.
+When making security related decisions, I always like to assume that my repository will become public at some point. This means keeping secrets out and never assuming that a security hole won't be found because, "Who's going to guess that they can do that?" This kind of assumption is known as security by obscurity and it's a bad policy to rely on.
 
 \end{aside}
 
@@ -214,7 +214,7 @@ Flask-DebugToolbar is another great tool for debugging problems with your applic
 
 ## Summary
 
-* Use virtualenv to keep your application’s dependencies together.
+* Use virtualenv to keep your application's dependencies together.
 * Use virtualenvwrapper to keep your virtual environments together.
 * Keep track of dependencies with one or more text files.
 * Use a version control system. I recommend Git.

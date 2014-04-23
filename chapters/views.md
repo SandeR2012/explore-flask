@@ -4,7 +4,7 @@
 
 ## View decorators
 
-Python decorators let us modify functions using other functions. When function x is decorated with function y and function x is called, function y is actually called first. Then function y can modify the arguments, halt execution or do something else before calling function x. We can use decorators to wrap views with code we'd like to run before they are executed.
+Python decorators are functions that are used to transform other functions. When a decorated function is called, the decorator is called instead. The decorator can then take action, modify the arguments, halt execution or call the original function. We can use decorators to wrap views with code we'd like to run before they are executed.
 
 
 \begin{codelisting}
@@ -17,9 +17,9 @@ def decorated():
 ```
 \end{codelisting}
 
-If you’ve gone through the Flask tutorial, the syntax in Listing~\ref{code:decorate} might look familiar to you. `@app.route` is a decorator used to match URLs to view functions in Flask apps. 
+If you've gone through the Flask tutorial, the syntax in Listing~\ref{code:decorate} might look familiar to you. `@app.route` is a decorator used to match URLs to view functions in Flask apps. 
 
-Let’s take a look at some other decorators you can use in your Flask apps.
+Let's take a look at some other decorators you can use in your Flask apps.
 
 ### Authentication
 
@@ -65,9 +65,9 @@ Only an authenticated user will be able to access the _/dashboard_ route. We can
 
 ### Caching
 
-Imagine that an article mentioning our application just appeared on CNN and some other news sites. We're getting thousands of requests per second. Our homepage makes several trips to the database for each request, so all of this attention is slowing things down to a crawl. How can we speed things up quickly, so all of these visitors don’t miss out on our site?
+Imagine that an article mentioning our application just appeared on CNN and some other news sites. We're getting thousands of requests per second. Our homepage makes several trips to the database for each request, so all of this attention is slowing things down to a crawl. How can we speed things up quickly, so all of these visitors don't miss out on our site?
 
-There are a lot of good answers, but this section is about caching, so we'll talk about that. Specifically, we’re going to use the Flask-Cache extension. This extension provides us with a decorator that we can use on our index view to cache the response for some period of time.
+There are a lot of good answers, but this section is about caching, so we'll talk about that. Specifically, we're going to use the Flask-Cache extension. This extension provides us with a decorator that we can use on our index view to cache the response for some period of time.
 
 Flask-Cache can be configured to work with a bunch of different caching backends. A popular choice is Redis, which is easy to set-up and use. Assuming Flask-Cache is already configured, Listing~\ref{code:cache} shows what our decorated view would look like.
 
@@ -121,7 +121,7 @@ Flask-Cache also lets us **memoize** functions — or cache the result of a func
 
 ### Custom decorators
 
-For this section, let's imagine we have an application that charges users each month. If a user’s account is expired, we’ll redirect them to the billing page and tell them to upgrade.
+For this section, let's imagine we have an application that charges users each month. If a user's account is expired, we'll redirect them to the billing page and tell them to upgrade.
 
 \begin{codelisting}
 \label{code:custom_decorator}
@@ -152,8 +152,8 @@ def check_expired(func):
 
 
 | 10 | When a function is decorated with `@check_expired` , `check_expired()` is called and the decorated function is passed as a parameter. |
-| 11 | `@wraps` is a decorator that tells Python that the function `decorated_function()` wraps around the view function `func()`. This makes the behavior of the functions a little more natural. See Box~\ref{aside:custom_links} |
-| 12 | `decorated_function` will get all of the args and kwargs that were passed to the original view function `func()`. This is where we check if the user’s account is expired. If it is, we’ll flash a message and redirect them to the billing page. |
+| 11 | `@wraps` is a decorator that does some bookkeeping so that `decorated_function()` appears as `func()` for the purposes of documentation and debugging. This makes the behavior of the functions a little more natural. |
+| 12 | `decorated_function` will get all of the args and kwargs that were passed to the original view function `func()`. This is where we check if the user's account is expired. If it is, we'll flash a message and redirect them to the billing page. |
 | 16 | Now that we've done what we wanted to do, we run the decorated view function `func()` with its original arguments. |
 
 
@@ -183,7 +183,7 @@ r1 == r2 # True
 ```
 \end{codelisting}
 
-Listing~\ref{code:stack_decorators} shows an example using our custom decorator and the `@login_required` decorator from the Flask-Login extension. We can use multiple decorators by stacking them.
+Listing~\ref{code:stack_demo} shows an example using our custom decorator and the `@lo\-gin_required` decorator from the Flask-Login extension. We can use multiple decorators by stacking them.
 
 \begin{codelisting}
 \label{code:stack_decorators}
@@ -280,7 +280,7 @@ Table~\ref{table:builtin_converters} shows Flask's built-in URL converters.
 
 We can also make custom converters to suit our needs. On Reddit — a popular link sharing site — users create and moderate communities for theme-based discussion and link sharing. Some examples are /r/python and /r/flask, denoted by the path in the URL: reddit.com/r/python and reddit.com/r/flask respectively. An interesting feature of Reddit is that you can view the posts from multiple subreddits as one by seperating the names with a plus-sign in the URL, e.g. reddit.com/r/python+flask.
 
-We can use a custom converter to implement this feature in our own Flask apps. We’ll take an arbitrary number of elements separated by plus-signs, convert them to a list with a `ListConverter` class and pass the list of elements to the view function.
+We can use a custom converter to implement this feature in our own Flask apps. We'll take an arbitrary number of elements separated by plus-signs, convert them to a list with a `ListConverter` class and pass the list of elements to the view function.
 
 \begin{codelisting}
 \label{code:list_converter}
@@ -327,7 +327,7 @@ app.url_map.converters['list'] = ListConverter
 
 This is another chance to run into some circular import problems if your `util` module has a `from . import app` line. That's why I waited until app had been initialized to import `ListConverter`.
 
-Now we can use our converter just like one of the built-ins. We specified the key in the dictionary as “list” so that’s how we use it in `@app.route()`.
+Now we can use our converter just like one of the built-ins. We specified the key in the dictionary as "list" so that's how we use it in `@app.route()`.
 
 \end{aside}
 
@@ -350,11 +350,11 @@ def subreddit_home(subreddits):
 ```
 \end{codelisting}
 
-This should work just like Reddit’s multi-reddit system. This same method can be used to make any URL converter we can dream of.
+This should work just like Reddit's multi-reddit system. This same method can be used to make any URL converter we can dream of.
 
 ## Summary
 
 * The `@login_required` decorator from Flask-Login helps you limit views to authenticated users.
 * The Flask-Cache extension gives you a bunch of decorators to implement various methods of caching.
-* We can develop custom view decorators to help us organize our code and stick to DRY (Don’t Repeat Yourself) coding principals.
-* Custom URL converters can be a great way to implement creative features involving URL’s.
+* We can develop custom view decorators to help us organize our code and stick to DRY (Don't Repeat Yourself) coding principals.
+* Custom URL converters can be a great way to implement creative features involving URL's.

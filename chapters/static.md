@@ -141,7 +141,7 @@ Flask-Assets combines your files in the order in which they are listed here. If 
 
 We're defining the bundles in a dictionary to make it easy to register them. webassets, the package behind Flask-Assets lets us register bundles in a number of ways, including passing a dictionary like the one we made in this snippet.
 
-Source: [https://github.com/miracle2k/webassets/blob/0.8/src/webassets/env.py#L380](https://github.com/miracle2k/webassets/blob/0.8/src/webassets/env.py#L380)
+Source: [https://github.com/miracle2k/webassets/blob/0.8/src/webassets/\-env.py#L380](https://github.com/miracle2k/webassets/blob/0.8/src/webassets/env.py#L380)
 \end{aside}
 
 Since we're registering our bundles in `util.assets`, all we have to do is import that module in _\_\_init\_\_.py_ after our app has been initialized.
@@ -205,7 +205,7 @@ To use our admin bundles, we'll insert them into the parent template for the adm
 
 
 
-We can do the same thing for the home bundles in _templates/home/layout.html_.
+We can do the same thing for the home bundles in _templates/home/layout\-.html_.
 
 ### Using filters
 

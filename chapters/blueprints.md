@@ -5,11 +5,11 @@
 
 ## What is a blueprint?
 
-A blueprint defines a collection of views, templates, static files and other elements that can be applied to an application. For example, let’s imagine that we have a blueprint for an admin panel. This blueprint would define the views for routes like _/admin/login_ and _/admin/dashboard_. It may also include the templates and static files that will be served on those routes. We can then use this blueprint to add an admin panel to our app, be it a social network for astronauts or a CRM for rocket salesmen.
+A blueprint defines a collection of views, templates, static files and other elements that can be applied to an application. For example, let's imagine that we have a blueprint for an admin panel. This blueprint would define the views for routes like _/admin/login_ and _/admin/dashboard_. It may also include the templates and static files that will be served on those routes. We can then use this blueprint to add an admin panel to our app, be it a social network for astronauts or a CRM for rocket salesmen.
 
 ## Why would you use blueprints?
 
-The killer use-case for blueprints is to organize our application into distinct components. For a Twitter-like microblog, we might have a blueprint for the website pages, e.g. _index.html_ and _about.html_. Then we could have another for the logged-in dashboard where we show all of the latest posts and yet another for our administrator’s panel. Each distinct area of the site can be separated into distinct areas of the code as well. This lets us structure our app as several smaller “apps” that each do one thing.
+The killer use-case for blueprints is to organize our application into distinct components. For a Twitter-like microblog, we might have a blueprint for the website pages, e.g. _index.html_ and _about.html_. Then we could have another for the logged-in dashboard where we show all of the latest posts and yet another for our administrator's panel. Each distinct area of the site can be separated into distinct areas of the code as well. This lets us structure our app as several smaller "apps" that each do one thing.
 
 \begin{aside}
 \label{aside:whybp_links}
@@ -48,7 +48,7 @@ yourapp/
 \end{codelisting}
 
 
-With the exception of *yourapp/views/\_\_init\_\_.py*, each of the _.py_ files in the _yourapp/views/_ directory from Listing~\ref{code:func_structure} is a blueprint. In *yourapp/\_\_init\_\_.py* we would import those blueprints and **register** them on our `Flask()` object. We’ll look a little more at how this is implemented later in this chapter. 
+With the exception of *yourapp/views/\_\_init\_\_.py*, each of the _.py_ files in the _yourapp/views/_ directory from Listing~\ref{code:func_structure} is a blueprint. In *yourapp/\_\_init\_\_\-.py* we would import those blueprints and **register** them on our `Flask()` object. We'll look a little more at how this is implemented later in this chapter. 
 
 \begin{aside}
 \label{aside:}
@@ -93,7 +93,7 @@ With a divisional structure like the app in Listing~\ref{code:div_structure}, ea
 
 The organizational structure you choose is largely a personal decision. The only difference is the way the hierarchy is represented -- i.e. you can architect Flask apps with either methodology -- so you should choose the one that makes sense to you.
 
-If your app has largely independent pieces that only share things like models and configuration, divisional might be the way to go. An example might be a SaaS app that lets user's build websites. You could have blueprints in "divisions" for the home page, the control panel, the user's website, and the admin panel. These components may very well have completely different static files and layouts. If you’re considering spinning off your blueprints as extensions or using them for other projects, a divisional structure will be easier to work with.
+If your app has largely independent pieces that only share things like models and configuration, divisional might be the way to go. An example might be a SaaS app that lets user's build websites. You could have blueprints in "divisions" for the home page, the control panel, the user's website, and the admin panel. These components may very well have completely different static files and layouts. If you're considering spinning off your blueprints as extensions or using them for other projects, a divisional structure will be easier to work with.
 
 On the other hand, if the components of your app flow together a little more, it might be better represented with a functional structure. An example of this would be Facebook. If it were to use Flask, it might have blueprints for the static pages (i.e. signed-out home, register, about, etc.), the dashboard (i.e. the news feed), profiles (_/robert/about_ and _/robert/photos_), settings (_/settings/security_ and _/settings/privacy_) and many more. These components all share a general layout and styles, but each has its own layout as well. Listing~\ref{code:fb1} shows a heavily abridged version of what Facebook might look like it if were built with Flask.
 
@@ -177,7 +177,7 @@ def about(user_url_slug):
 ```
 \end{codelisting}
 
-To create a blueprint object, we import the `Blueprint()` class and initialize it with the arguments `name` and `import_name`. Usually `import_name` will just be `__name__`, which is a special Python variable containing the name of the current module.
+To create a blueprint object, we import the `Blueprint()` class and initialize it with the arguments `name` and `import_name`. Usually `import_\-name` will just be `__name__`, which is a special Python variable containing the name of the current module.
 
 We're using a functional structure for this Facebook example. If we were using a divisional structure, we'd want to tell Flask that the blueprint has its own template and static directories. Listing~\ref{code:fb3} shows what that would look like.
 
@@ -208,11 +208,11 @@ app.register_blueprint(profile)
 \end{codelisting}
 
 
-Now the routes defined in _facebook/views/profile.py_ (e.g. `/<user_url_slug>`) are registered on the application and act just as if you'd defined them with `@app.route()`.
+Now the routes defined in _facebook/views/profile.py_ (e.g. `/<user_url_\-slug>`) are registered on the application and act just as if you'd defined them with `@app.route()`.
 
 ### Using a dynamic URL prefix
 
-Continuing with the Facebook example, notice how all of the profile routes start with the `<user_url_slug>` portion and pass that value to the view. We want users to be able to access a profile by going to a URL like _https://facebook.com/john.doe_. We can stop repeating ourselves by defining a dynamic prefix for all of the blueprint's routes.
+Continuing with the Facebook example, notice how all of the profile routes start with the `<user_url_slug>` portion and pass that value to the view. We want users to be able to access a profile by going to a URL like _https://facebo\-ok.com/john.doe_. We can stop repeating ourselves by defining a dynamic prefix for all of the blueprint's routes.
 
 Blueprints let us define both static and dynamic prefixes. We can tell Flask that all of the routes in a blueprint should be prefixed with _/profile_ for example; that would be a static prefix. In the case of the Facebook example, the prefix is going to change based on which profile the user is viewing. Whatever text they choose is the URL slug of the profile which we should display; this is a dynamic prefix.
 
@@ -246,9 +246,9 @@ app.register_blueprint(profile, url_prefix='/<user_url_slug>')
 ```
 \end{codelisting}
 
-While there aren’t any technical limitations to either method, it’s nice to have the prefixes available in the same file as the registrations. This makes it easier to move things around from the top-level. For this reason, I recommend setting `url_prefix` on registration.
+While there aren't any technical limitations to either method, it's nice to have the prefixes available in the same file as the registrations. This makes it easier to move things around from the top-level. For this reason, I recommend setting `url_prefix` on registration.
 
-We can use converters to make the prefix dynamic, just like in `route()` calls. This includes any custom converters that we've defined. When using converters, we can pre-process the value given before handing it off to the view. In this case we’ll want to grab the user object based on the URL slug passed into our profile blueprint. We'll do that by decorating a function with `url_value_preprocessor()`.
+We can use converters to make the prefix dynamic, just like in `route()` calls. This includes any custom converters that we've defined. When using converters, we can pre-process the value given before handing it off to the view. In this case we'll want to grab the user object based on the URL slug passed into our profile blueprint. We'll do that by decorating a function with `url_value_preprocessor()`.
 
 \begin{codelisting}
 \label{code:fb7}
@@ -354,13 +354,13 @@ Table~\ref{table:subd1} explains the different blueprints in this app.
     URL & Route & Description \\
     \hline
     sitemaker.com & \textit{sitemaker/home} & Just a vanilla blueprint. Views, templates and static files for \textit{index.html}, \textit{about.html} and \textit{pricing.html}. \\
-    bigdaddy.sitemaker.com & \textit{sitemaker/site} & This blueprint uses a dynamic subdomain and includes the elements of the user’s website. We’ll go over some of the code used to implement this blueprint below. \\
+    bigdaddy.sitemaker.com & \textit{sitemaker/site} & This blueprint uses a dynamic subdomain and includes the elements of the user's website. We'll go over some of the code used to implement this blueprint below. \\
     bigdaddy.sitemaker.com/admin & \textit{sitemaker/dash} & This blueprint could use both a dynamic subdomain and a URL prefix by combining the techniques in this section with those from the previous section. \\
     \hline
 \end{tabular}
 \end{table}
 
-We can define our dynamic subdomain the same way we defined our URL prefix. Both options (in the blueprint directory or in the top-level _\_\_init\_\_.py_) are available, but once again we’ll keep the definitions in *sitemaker/\_\_init.py\_\_*.
+We can define our dynamic subdomain the same way we defined our URL prefix. Both options (in the blueprint directory or in the top-level _\_\_init\_\_.py_) are available, but once again we'll keep the definitions in *sitemaker/\_\_init.py\_\_*.
 
 \begin{codelisting}
 \label{code:subd2}
@@ -376,7 +376,7 @@ app.register_blueprint(site, subdomain='<site_subdomain>')
 ```
 \end{codelisting}
 
-Since we're using a divisional structure, we'll define the blueprint in _sitemaker/site/\_\_init\_\_.py_. 
+Since we're using a divisional structure, we'll define the blueprint in _sitema\-ker/site/\_\_init\_\_.py_. 
 
 \begin{codelisting}
 \label{code:subd3}
@@ -406,9 +406,9 @@ import .views
 ```
 \end{codelisting}
 
-Now we have the site information from the database that we’ll use to display the user’s site to the visitor who requests their subdomain.
+Now we have the site information from the database that we'll use to display the user's site to the visitor who requests their subdomain.
 
-To get Flask to work with subdomains, you’ll need to specify the `SERVER_NAME` configuration variable.
+To get Flask to work with subdomains, we'll need to specify the `SERV\-ER_NAME` configuration variable.
 
 \begin{codelisting}
 \label{code:subd4}
@@ -444,16 +444,16 @@ You can set both a subdomain and url_prefix. Think about how we would configure 
 
 ## Refactoring small apps to use blueprints
 
-I’d like to go over a brief example of the steps we can take to convert an app to use blueprints. We’ll start off with a typical Flask app and restructure it.
+I'd like to go over a brief example of the steps we can take to convert an app to use blueprints. We'll start off with a typical Flask app and restructure it.
 
 \begin{codelisting}
 \label{code:refact1}
-\codecaption{A first look at our growing app called gnizama}
+\codecaption{A first look at our growing app called U2FtIEJsYWNr}
 ```
 config.txt
 requirements.txt
 run.py
-gnizama/
+U2FtIEJsYWNr/
   __init__.py
   views.py
   models.py
@@ -464,11 +464,11 @@ tests/
 \end{codelisting}
 
 
-The _views.py_ file has grown to 10,000 lines of code! We’ve been putting off refactoring it, but it’s finally time. The file contains the views for every section of our site. The sections are the home page, the user dashboard, the admin dashboard, the API and the company blog.
+The _views.py_ file has grown to 10,000 lines of code! We've been putting off refactoring it, but it's finally time. The file contains the views for every section of our site. The sections are the home page, the user dashboard, the admin dashboard, the API and the company blog.
 
 ### Step 1: Divisional or functional?
 
-This application is made up of very distinct sections. Templates and static files probably aren’t going to be shared between the user dashboard and the company blog, for example. We’ll go with a divisional structure.
+This application is made up of very distinct sections. Templates and static files probably aren't going to be shared between the user dashboard and the company blog, for example. We'll go with a divisional structure.
 
 ### Step 2: Move some files around
 
@@ -476,11 +476,11 @@ This application is made up of very distinct sections. Templates and static file
 \label{aside:refact2}
 \heading{WARNING}
 
-Before you make any changes to your app, commit everything to version control. You don’t want to accidentally delete something for good.
+Before you make any changes to your app, commit everything to version control. You don't want to accidentally delete something for good.
 
 \end{aside}
 
-Next we’ll go ahead and create the directory tree for our new app. We can start by creating a folder for each blueprint within the package directory. Then we'll copy _views.py_, _static/_ and _templates/_ in their entirety to each blueprint directory. We can then remove them from the top-level package directory.
+Next we'll go ahead and create the directory tree for our new app. We can start by creating a folder for each blueprint within the package directory. Then we'll copy _views.py_, _static/_ and _templates/_ in their entirety to each blueprint directory. We can then remove them from the top-level package directory.
 
 \begin{codelisting}
 \label{code:refact3}
@@ -489,7 +489,7 @@ Next we’ll go ahead and create the directory tree for our new app. We can star
 config.txt
 requirements.txt
 run.py
-gnizama/
+U2FtIEJsYWNr/
   __init__.py
   home/
     views.py
@@ -519,7 +519,7 @@ tests/
 
 ### Step 3: Cut the crap
 
-Now we can go into each blueprint and remove the views, static files and templates that don’t apply to that blueprint. How you go about this step largely depends on how your app was organized to begin with. 
+Now we can go into each blueprint and remove the views, static files and templates that don't apply to that blueprint. How you go about this step largely depends on how your app was organized to begin with. 
 
 The end result should be that each blueprint has a _views.py_ file with all of the views for that blueprint. No two blueprints should define a view for the same route. Each _templates/_ directory should only include the templates for the views in that blueprint. Each _static/_ directory should only include the static files that should be exposed by that blueprint.
 
@@ -527,19 +527,19 @@ The end result should be that each blueprint has a _views.py_ file with all of t
 \label{aside:refact4}
 \heading{A note on removing imports}
 
-Make it a point to eliminate all unnecessary imports. It’s easy to forget about them, but at best they clutter your code and at worst they slow down your application.
+Make it a point to eliminate all unnecessary imports. It's easy to forget about them, but at best they clutter your code and at worst they slow down your application.
 
 \end{aside}
 
 ### Step 4: Blueprint...ifi...cation or something
 
-This is the part where we turn our directories into blueprints. The key is in the _\_\_init\_\_.py_ files. For starters, let’s take a look at the definition of the API blueprint.
+This is the part where we turn our directories into blueprints. The key is in the _\_\_init\_\_.py_ files. For starters, let's take a look at the definition of the API blueprint.
 
 \begin{codelisting}
 \label{code:refact5}
 \codecaption{Defining the API blueprint}
 ```python
-# gnizama/api/__init__.py
+# U2FtIEJsYWNr/api/__init__.py
 
 from flask import Blueprint
 
@@ -554,20 +554,20 @@ import .views
 ```
 \end{codelisting}
 
-Next we can register this blueprint in the gnizama package’s top-level _\_\_init\_\_.py_ file.
+Next we can register this blueprint in the U2FtIEJsYWNr package's top-level _\_\_init\_\_.py_ file.
 
 \begin{codelisting}
 \label{code:refact6}
 \codecaption{Registering the API blueprint}
 ```python
-# gnizama/__init__.py
+# U2FtIEJsYWNr/__init__.py
 
 from flask import Flask
 from .api import api
 
 app = Flask(__name__)
 
-# Puts the API blueprint on api.gnizama.com.
+# Puts the API blueprint on api.U2FtIEJsYWNr.com.
 app.register_blueprint(api, subdomain='api')
 ```
 \end{codelisting}
@@ -578,7 +578,7 @@ Make sure that the routes are registered on the blueprint now rather than the ap
 \label{code:refact7}
 \codecaption{An API view before the refactor}
 ```python
-# gnizama/views.py
+# U2FtIEJsYWNr/views.py
 
 from . import app
 
@@ -594,7 +594,7 @@ def api_search():
 \label{code:refact8}
 \codecaption{An API route after the refactor}
 ```python
-# gnizama/api/views.py
+# U2FtIEJsYWNr/api/views.py
 
 from . import api
 

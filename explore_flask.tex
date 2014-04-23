@@ -7,6 +7,8 @@
 % \setdefaultlanguage{french}
 % \DeclareTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
 
+\newif\iftralics
+\ifx\tralicsversion\undefined\tralicsfalse\else\tralicstrue\fi
 \usepackage{latex_styles/softcover}
 \VerbatimFootnotes % Allows verbatim text in footnotes
 \title{Explore Flask}

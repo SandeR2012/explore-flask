@@ -42,7 +42,7 @@ This sign-in form can do a few of things for us. It can secure our app against C
 
 CSRF stands for cross site request forgery. CSRF attacks involve a third party forging a request (like a form submission) to an app's server. A vulnerable server assumes that the data is coming from a form on its own site and takes action accordingly.
 
-As an example, let's say that an email provider lets you delete your account by submitting a form. The form sends a POST request to an `account_delete` endpoint on their server and deletes the account that was logged-in when the form was submitted. We can create a form on our own site that sends a POST request to the same `account_delete` endpoint. Now, if we can get someone to click 'submit' on our form (or do it via JavaScript when they load the page) their logged-in account with the email provider will be deleted. Unless of course the email provider knows not to assume that form submissions are coming from their own forms.
+As an example, let's say that an email provider lets you delete your account by submitting a form. The form sends a POST request to an `account_del\-ete` endpoint on their server and deletes the account that was logged-in when the form was submitted. We can create a form on our own site that sends a POST request to the same `account_delete` endpoint. Now, if we can get someone to click 'submit' on our form (or do it via JavaScript when they load the page) their logged-in account with the email provider will be deleted. Unless of course the email provider knows not to assume that form submissions are coming from their own forms.
 
 So how do we stop assuming that POST requests come from our own forms? WTForms makes it possible by generating a unique token when rendering each form. That token is meant to be passed back to the server, along with the form data in the POST request and must be validated before the form is accepted. The key is that the token is tied to a value stored in the user's session (cookies) and expires after a certain amount of time (30 minutes by default). This way the only person who can submit a valid form is the person who loaded the page (or at least someone at the same computer), and they can only do it for 30 minutes after loading the page.
 
@@ -88,8 +88,8 @@ We import our form from our `forms` package and instantiate it in the view. Then
 \label{aside:}
 \heading{Related Links}
 
-- Documentation for `Form.validate_on_submit`: [http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Form.validate_on_submit](http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Form.validate_on_submit)
-- Source for `Form.validate_on_submit`: [https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120](https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120)
+- Documentation for `Form.validate_on_submit`: [http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Fo\-rm.validate_on_submit](http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Form.validate_on_submit)
+- Source for `Form.validate_on_submit`: [https://github.com/ajford\-/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120](https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120)
 
 \end{aside}
 
@@ -133,7 +133,7 @@ Flask-WTF CSRF tokens aren't limited to protecting form submissions. If your app
 
 ### Custom validators
 
-In addition to the built-in form validators provided by WTForms (e.g. `Required()`, `Email()`, etc.), we can create our own validators. We'll demonstrate this by making a `Unique()` validator that will check a database and make sure that the value provided by the user doesn't already exist. This could be used to make sure that a username or email address isn't already in use. Without WTForms, we'd probably be doing these checks in the view, but now we can abstract that away to the form itself.
+In addition to the built-in form validators provided by WTForms (e.g. `Requi\-red()`, `Email()`, etc.), we can create our own validators. We'll demonstrate this by making a `Unique()` validator that will check a database and make sure that the value provided by the user doesn't already exist. This could be used to make sure that a username or email address isn't already in use. Without WTForms, we'd probably be doing these checks in the view, but now we can abstract that away to the form itself.
 
 We'll start by defining a simple sign-up form.
 
@@ -266,7 +266,7 @@ If we want to pass the "class" HTML attribute, we have to use `class_=''` since 
 \label{aside:}
 \heading{Related Links}
 
-- The documented list of available field properties: [http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name](http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name)
+- The documented list of available field properties: [http://wtforms.simplecodes.com\-/docs/1.0.4/fields.html#wtforms.fields.Field.name](http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name)
 
 \end{aside}
 
@@ -285,6 +285,6 @@ You may notice that we don't need to use Jinja's `|safe` filter. This is because
 * Forms can be scary from a security perspective.
 * WTForms (and Flask-WTF) make it easy to define, secure and render your forms.
 * Use the CSRF protection provided by Flask-WTF to secure your forms.
-* You can use Flask-WTF to protect AJAX calls against CSRF attacks too.
+* You can use sFlask-WTF to protect AJAX calls against CSRF attacks too.
 * Define custom form validators to keep validation logic out of your views.
 * Use the WTForms field rendering to render your form's HTML so you don't have to update it every time you make some changes to the form definition.

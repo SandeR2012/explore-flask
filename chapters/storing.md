@@ -32,7 +32,7 @@ db = SQLAlchemy(app)
 ```
 \end{codelisting}
 
-First we initialize and configure our Flask app and then we use it to initialize our SQLAlchemy database handler. We're going to use an instance folder for our database configuration so we should use the `instance_relative_config` option when initializing the app and then call `app.config.from_pyfile` to load it. Then we can define our models.
+First we initialize and configure our Flask app and then we use it to initialize our SQLAlchemy database handler. We're going to use an instance folder for our database configuration so we should use the `instance_relative\-_config` option when initializing the app and then call `app.config.fr\-om_pyfile` to load it. Then we can define our models.
 
 \begin{codelisting}
 \label{code:engine_model1}
@@ -74,7 +74,7 @@ SQLALCHEMY_DATABASE_URI = "postgresql://user:password@localhost/spaceshipDB"
 \label{aside:}
 \heading{Related Links}
 
-Your database URI will be different depending on the engine you use and where it's hosted. See the SQLAlchemy documentation for this here: [http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#database-urls](http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#database-urls)
+Your database URI will be different depending on the engine you use and where it's hosted. See the SQLAlchemy documentation for this here: [http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#data\-base-urls](http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#database-urls)
 
 \end{aside}
 
@@ -111,11 +111,11 @@ Now, thanks to SQLAlchemy, our tables have been created in the database specifie
 
 The schema of a database is not set in stone. For example, we may want to add a `last_fired` column to the engine table. If we don't have any data, we can just update the model and run `db.create_all()` again. However, if we have six months of engine data logged in that table, we probably don't want to start over from scratch. That's where database migrations come in.
 
-Alembic is a database migration tool created specifically for use with SQLAlchemy. It lets us keep a versioned history of our database schema so that we can later upgrade to a new schema and even downgrade back to an older one.
+Alembic is a database migration tool created specifically for use with SQL\-Alchemy. It lets us keep a versioned history of our database schema so that we can later upgrade to a new schema and even downgrade back to an older one.
 
 Alembic has an extensive tutorial to get you started, so I'll just give you a quick overview and point out a couple of things to watch out for.
 
-We'll create our alembic "migration environment" via the `alembic init` command. Once we run this in our repository root we'll have a new directory with the very creative name _alembic_. Our repository will end up looking something like the example in Listing~\ref{code:alembic1}, adapted from the Alembic tutorial.
+We'll create our alembic "migration environment" via the `alembic in\-it` command. Once we run this in our repository root we'll have a new directory with the very creative name _alembic_. Our repository will end up looking something like the example in Listing~\ref{code:alembic1}, adapted from the Alembic tutorial.
 
 \begin{codelisting}
 \label{code:alembic1}

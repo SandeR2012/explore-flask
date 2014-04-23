@@ -8,29 +8,31 @@ First of all, I'd like to say thank you to my volunteer editor, Will Kahn-Greene
 
 Another big thanks to everyone who took the time to talk with me about how they are using Flask. This includes Armin Ronacher (Flask creator), Mark Harviston (Elsevier), Glenn Yonemitsu (Markup Hive), Andy Parsons (Happify), Oleg Lavrovsky (Apps with love), Joel Anderson (Cloudmancer) and Mahmoud Abdelkader (Balanced).
 
+The cover and all the illustrations in this book were done by Dominic Flask [http://www.dangerdom.com/].
+
 *Explore Flask* wouldn't be happening if it weren't for the hundreds of people who backed the project on Kickstarter. As promised in the Kickstarter project, here are the names of all of the generous men and women who pledged $50 or more:
 
 * Balanced Payments (https://balancedpayments.com)
 
 ![Balanced Logo](images/balanced-logo.png)
 
-* CodeLesson (http://codelesson.com)
+* CodeLesson
 * Sam Black
 * Michał Bartoszkiewicz
 * Chad Catlett
 * Jacob Kaplan-Moss
-* John {LAST NAME?}
+* John Schrom
 * Zach White
 * Dorothy L. Erwin
 * Brandon Brown
 * Fredrik Larsson
-* khoffrath {FIND OUT REAL NAME FOR FUTURE VERSIONS}
+* khoffrath (Real name coming soon)
 * Jonathan Chen
 * Mitch Wainer
 * John Cleaver
 * Paul Baines
 * Brandon Bennett
-* gaelanadams {IS THIS Gaelan Adams?}
+* Gaelan Adams
 * Nick Charlton
 * Dustin Chapman
 * Senko Rašić
