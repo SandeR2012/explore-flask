@@ -1,6 +1,6 @@
-![Templates](images/8.png)
-
 # Templates
+
+![Templates](images/templates.png)
 
 While Flask doesn't force us to use any particular templating language, it assumes that we're going to use Jinja. Most of the developers in the Flask community use Jinja, and I recommend that you do the same. There are a few extensions that have been written to let us use other templating languages, but unless you have a good reason (not knowing the Jinja syntax yet is not a good reason!) stick with the default; you'll save yourself a lot of time and headache.
 

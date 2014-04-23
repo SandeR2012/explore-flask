@@ -1,5 +1,7 @@
 # Patterns for handling users
 
+![Patterns for handling users](images/users.png)
+
 One of the most common things that modern web applications need to do is handle users. An application with basic account features needs to handle a lot of things like registration, email confirmation, securely storing passwords, secure password reset, authentication and more. Since a lot of security issues present themselves when it comes to handling users, it's generally best to stick to standard patterns in this area.
 
 \begin{aside}
@@ -217,7 +219,7 @@ Now that Flask-Bcrypt is configured, it's time to start hashing passwords. We co
 
 \begin{codelisting}
 \label{code:}
-\codecaption{Creating a setter with \texttt{@hybrid_property} and \texttt{@[function].setter}}
+\codecaption{Creating a setter}
 ```python
 # ourapp/models.py
 

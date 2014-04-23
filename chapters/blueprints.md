@@ -1,7 +1,7 @@
-![Blueprints](images/7.png)
-
 # Blueprints
 \label{ch:blueprints}
+
+![Blueprints](images/blueprints.png)
 
 ## What is a blueprint?
 
@@ -95,7 +95,7 @@ The organizational structure you choose is largely a personal decision. The only
 
 If your app has largely independent pieces that only share things like models and configuration, divisional might be the way to go. An example might be a SaaS app that lets user's build websites. You could have blueprints in "divisions" for the home page, the control panel, the user's website, and the admin panel. These components may very well have completely different static files and layouts. If you're considering spinning off your blueprints as extensions or using them for other projects, a divisional structure will be easier to work with.
 
-On the other hand, if the components of your app flow together a little more, it might be better represented with a functional structure. An example of this would be Facebook. If it were to use Flask, it might have blueprints for the static pages (i.e. signed-out home, register, about, etc.), the dashboard (i.e. the news feed), profiles (_/robert/about_ and _/robert/photos_), settings (_/settings/security_ and _/settings/privacy_) and many more. These components all share a general layout and styles, but each has its own layout as well. Listing~\ref{code:fb1} shows a heavily abridged version of what Facebook might look like it if were built with Flask.
+On the other hand, if the components of your app flow together a little more, it might be better represented with a functional structure. An example of this would be Facebook. If Facebook used Flask, it might have blueprints for the static pages (i.e. signed-out home, register, about, etc.), the dashboard (i.e. the news feed), profiles (_/robert/about_ and _/robert/photos_), settings (_/settings/security_ and _/settings/privacy_) and many more. These components all share a general layout and styles, but each has its own layout as well. Listing~\ref{code:fb1} shows a heavily abridged version of what Facebook might look like it if were built with Flask.
 
 \begin{codelisting}
 \label{code:fb1}
@@ -348,15 +348,18 @@ Table~\ref{table:subd1} explains the different blueprints in this app.
 
 \begin{table}
 \caption{The blueprints of our example application \label{table:subd1}}
-\begin{tabular}{|c|c|l|}
+\iftralics
+   \begin{tabular}{lll}
+\else
+   \begin{tabular}{llp{0.5\linewidth}}
+\fi
 
-    \hline
     URL & Route & Description \\
     \hline
     sitemaker.com & \textit{sitemaker/home} & Just a vanilla blueprint. Views, templates and static files for \textit{index.html}, \textit{about.html} and \textit{pricing.html}. \\
     bigdaddy.sitemaker.com & \textit{sitemaker/site} & This blueprint uses a dynamic subdomain and includes the elements of the user's website. We'll go over some of the code used to implement this blueprint below. \\
     bigdaddy.sitemaker.com/admin & \textit{sitemaker/dash} & This blueprint could use both a dynamic subdomain and a URL prefix by combining the techniques in this section with those from the previous section. \\
-    \hline
+
 \end{tabular}
 \end{table}
 

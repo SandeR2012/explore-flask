@@ -1,5 +1,7 @@
 # Deployment
 
+![Deployment](images/deployment.png)
+
 We're finally ready to show our app to the world. It's time to deploy. This process can be a pain because there are so many moving parts. There are a lot of choices to make when it comes to our production stack as well. In this chapter, we're going to talk about some of the important pieces and some of the options we have with each.
 
 ## The Host

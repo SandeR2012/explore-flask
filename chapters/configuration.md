@@ -1,7 +1,7 @@
-![Configuration](images/5.png)
-
 # Configuration
 \label{cha:configuration}
+
+![Configuration](images/configuration.png)
 
 When you're learning Flask, configuration seems simple. You just define some variables in _config.py_ and everything works. That simplicity starts to fade away when you have to manage configuration for a production application. You may need to protect secret API keys or use different configurations for different environments (e.g. development and production environments). In this chapter we'll go voer some advanced Flask features that makes this managing configuration easier.
 
@@ -112,7 +112,8 @@ The private nature of the instance folder makes it a great candidate for definin
 
 SECRET_KEY = 'Sm9obiBTY2hyb20ga2lja3MgYXNz'
 STRIPE_API_KEY = 'SmFjb2IgS2FwbGFuLU1vc3MgaXMgYSBoZXJv'
-SQLALCHEMY_DATABASE_URI="postgresql://user:TWljaGHFgiBCYXJ0b3N6a2lld2ljeiEh@localhost/databasename"
+SQLALCHEMY_DATABASE_URI= \
+"postgresql://user:TWljaGHFgiBCYXJ0b3N6a2lld2ljeiEh@localhost/databasename"
 ```
 \end{codelisting}
 

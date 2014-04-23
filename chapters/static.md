@@ -1,5 +1,7 @@
 # Static files
 
+![Static files](images/static.png)
+
 As their name suggests, static files are the files that don't change. In your average app, this includes CSS files, JavaScript files and images. They can also include audio files and other things of that nature.
 
 ## Organizing your static files

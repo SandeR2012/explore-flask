@@ -1,6 +1,6 @@
-![Advanced patterns for views and routing](images/6.png)
-
 # Advanced patterns for views and routing
+
+![Advanced patterns for views and routing](images/views.png)
 
 ## View decorators
 
@@ -150,12 +150,22 @@ def check_expired(func):
 
 ---
 
+\begin{table}
+\caption{A breakdown of our custom decorator}}
 
-| 10 | When a function is decorated with `@check_expired` , `check_expired()` is called and the decorated function is passed as a parameter. |
-| 11 | `@wraps` is a decorator that does some bookkeeping so that `decorated_function()` appears as `func()` for the purposes of documentation and debugging. This makes the behavior of the functions a little more natural. |
-| 12 | `decorated_function` will get all of the args and kwargs that were passed to the original view function `func()`. This is where we check if the user's account is expired. If it is, we'll flash a message and redirect them to the billing page. |
-| 16 | Now that we've done what we wanted to do, we run the decorated view function `func()` with its original arguments. |
+\iftralics
+   \begin{tabular}{ll}
+\else
+   \begin{tabular}{lp{0.7\linewidth}}
+\fi
 
+  10 & When a function is decorated with @check\_expired, check\_expired() is called and the decorated function is passed as a parameter. \\
+  11 & @wraps is a decorator that does some bookkeeping so that decorated\_function() appears as func() for the purposes of documentation and debugging. This makes the behavior of the functions a little more natural. \\
+  12 & decorated\_function will get all of the args and kwargs that were passed to the original view function func(). This is where we check if the user's account is expired. If it is, we'll flash a message and redirect them to the billing page. \\
+  16 & Now that we've done what we wanted to do, we run the decorated view function func() with its original arguments. \\
+
+\end{tabular}
+\end{table}
 
 When we stack decorators, the topmost decorator will run first, then call the next function in line: either the view function or the next decorator. The decorator syntax is just a little syntactic sugar.
 
@@ -263,14 +273,12 @@ Table~\ref{table:builtin_converters} shows Flask's built-in URL converters.
 \begin{table}
 \caption{Flask's built-in converters \label{table:builtin_converters}}
 
-\begin{tabular}{|l|l|}
-    
-    \hline
+\begin{tabular}{ll}
+
     string & Accepts any text without a slash (the default). \\
     int & Accepts integers. \\
     float & Like int but for floating point values. \\
     path & Like string but accepts slashes. \\
-    \hline
 
 \end{tabular}
 \end{table}
@@ -278,7 +286,7 @@ Table~\ref{table:builtin_converters} shows Flask's built-in URL converters.
 
 ### Custom converters
 
-We can also make custom converters to suit our needs. On Reddit — a popular link sharing site — users create and moderate communities for theme-based discussion and link sharing. Some examples are /r/python and /r/flask, denoted by the path in the URL: reddit.com/r/python and reddit.com/r/flask respectively. An interesting feature of Reddit is that you can view the posts from multiple subreddits as one by seperating the names with a plus-sign in the URL, e.g. reddit.com/r/python+flask.
+We can also make custom converters to suit our needs. On Reddit — a popular link sharing site — users create and moderate communities for theme-based discussion and link sharing. Some examples are /r/python and /r/flask, denoted by the path in the URL: *reddit.com/r/python* and *reddit.com/r/flask* respectively. An interesting feature of Reddit is that you can view the posts from multiple subreddits as one by seperating the names with a plus-sign in the URL, e.g. *reddit.com/r/python+flask*.
 
 We can use a custom converter to implement this feature in our own Flask apps. We'll take an arbitrary number of elements separated by plus-signs, convert them to a list with a `ListConverter` class and pass the list of elements to the view function.
 
