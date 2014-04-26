@@ -160,11 +160,13 @@ from .util import assets
 ```
 \end{codelisting}
 
-### Using your bundles
+### Using our bundles
+
+To use our admin bundles, we'll insert them into the parent template for the admin section: _admin/layout.html_.
 
 \begin{codelisting}
 \label{code:}
-\codecaption{Our app's \textit{templates/} directory}
+\codecaption{Our app's directory}
 ```
 templates/
     home/
@@ -178,8 +180,7 @@ templates/
 ```
 \end{codelisting}
 
-
-To use our admin bundles, we'll insert them into the parent template for the admin section: _admin/layout.html_.
+---
 
 \begin{codelisting}
 \label{code:}

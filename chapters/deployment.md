@@ -86,7 +86,7 @@ def index():
 A fine app indeed. Now, to serve it up with Gunicorn, we simply run the command in Listing~\ref{code:runner1}.
 
 \begin{codelisting}
-\label{code:}
+\label{code:runner1}
 \codecaption{Running our app with Gunicorn}
 ```console
 (ourapp)$ gunicorn rocket:app
@@ -221,7 +221,7 @@ We should now be able to make our requests to Nginx and receive the response fro
 \label{aside:}
 \heading{Related Links}
 
-- Nginx configuration section in the Gunicorn docs will give you more information about setting Nginx up for this purpose: [http://docs.gunicorn.org/en/latest/deploy.html#nginx-configuration](http://docs.gunicorn.org/en/latest/deploy.html#nginx-configuration)
+- Nginx configuration section in the Gunicorn docs will give you more information about setting Nginx up for this purpose: [http://docs.g\-unicorn.org/en/latest/deploy.html#nginx-configuration](http://docs.gunicorn.org/en/latest/deploy.html#nginx-configuration)
 
 \end{aside}
 
@@ -255,7 +255,7 @@ def index():
 \label{aside:}
 \heading{Related Links}
 
-- Read more about ProxyFix in the Werkzeug docs: [http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.con\-trib.fixers.ProxyFix](http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix)
+- Read more about ProxyFix in the Werkzeug docs: [http://werkzeug.p\-ocoo.org/docs/contrib/fixers/#werkzeug.con\-trib.fixers.ProxyFix](http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix)
 
 \end{aside}
 

@@ -52,7 +52,7 @@ So how do we stop assuming that POST requests come from our own forms? WTForms m
 \label{aside:}
 \heading{Related Links}
 
-- Documentation on how WTForms generates these tokens: [http://wtforms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session](http://wtforms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session) 
+- Documentation on how WTForms generates these tokens: [http://wtfo\-rms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session](http://wtforms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session) 
 
 - More information about CSRF: [https://www.owasp.org/index.php/CSRF](https://www.owasp.org/index.php/CSRF)
 
@@ -90,7 +90,7 @@ We import our form from our `forms` package and instantiate it in the view. Then
 \label{aside:}
 \heading{Related Links}
 
-- Documentation for `Form.validate_on_submit`: [http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Fo\-rm.validate_on_submit](http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Form.validate_on_submit)
+- Documentation for `Form.validate_on_submit`: [http://pythonh\-osted.org/Flask-WTF/#flask.ext.wtf.Fo\-rm.validate_on_submit](http://pythonhosted.org/Flask-WTF/#flask.ext.wtf.Form.validate_on_submit)
 - Source for `Form.validate_on_submit`: [https://github.com/ajford\-/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120](https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120)
 
 \end{aside}
@@ -268,7 +268,7 @@ If we want to pass the "class" HTML attribute, we have to use `class_=''` since 
 \label{aside:}
 \heading{Related Links}
 
-- The documented list of available field properties: [http://wtforms.simplecodes.com\-/docs/1.0.4/fields.html#wtforms.fields.Field.name](http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name)
+- The documented list of available field properties: [http://wtforms.si\-mplecodes.com\-/docs/1.0.4/fields.html#wtforms.fields.Fiel\-d.name](http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name)
 
 \end{aside}
 
@@ -278,7 +278,9 @@ If we want to pass the "class" HTML attribute, we have to use `class_=''` since 
 \label{aside:}
 \heading{A note on Jinja's \texttt{|safe} filter}
 
-You may notice that we don't need to use Jinja's `|safe` filter. This is because WTForms renders HTML safe strings. See more here: [http://pythonhosted.org/Flask-WTF/#using-the-safe-filter](http://pythonhosted.org/Flask-WTF/#using-the-safe-filter)
+You may notice that we don't need to use Jinja's `|safe` filter. This is because WTForms renders HTML safe strings.
+
+See more here: [http://pythonhosted.org/Flask-WTF/#using-the-safe-filter](http://pythonhosted.org/Flask-WTF/#using-the-safe-filter)
 
 \end{aside}
 

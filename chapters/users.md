@@ -451,7 +451,7 @@ There a lot of interesting discussions in the User Experience (UX) community abo
 
 - Read more about this topic in this thread on the User Experience Stack Exchange: [http://ux.stackexchange.com/questions/20953/why-should-we-ask-the-password-twice-during-registration/21141](http://ux.stackexchange.com/questions/20953/why-should-we-ask-the-password-twice-during-registration/21141)
 
-- There are also some cool ideas for simplifying sign-up and sign-in forms in this Smashing Magazine article: [http://uxdesign.smashingmagazine.com/2011/05/05/innovative-techniques-to-simplify-signups-and-logins/](http://uxdesign.smashingmagazine.com/2011/05/05/innovative-techniques-to-simplify-signups-and-logins/)
+- There are also some cool ideas for simplifying sign-up and sign-in forms in this Smashing Magazine article: [http://uxdesign.smash\-ingmagazine.com/2011/05/05/innovative-techniques-to-simplify-signups-and-logins/](http://uxdesign.smashingmagazine.com/2011/05/05/innovative-techniques-to-simplify-signups-and-logins/)
 
 \end{aside}
 

@@ -12,27 +12,8 @@ The cover and all the illustrations in this book were done by Dominic Flask [htt
 
 *Explore Flask* wouldn't be happening if it weren't for the hundreds of people who backed the project on Kickstarter. As promised in the Kickstarter project, here are the names of all of the generous men and women who pledged $50 or more:
 
-* Balanced Payments (https://balancedpayments.com)
+Balanced Payments [[https://balancedpayments.com](https://balancedpayments.com)]
 
 ![Balanced Logo](images/balanced-logo.png)
 
-* CodeLesson
-* Sam Black
-* Michał Bartoszkiewicz
-* Chad Catlett
-* Jacob Kaplan-Moss
-* John Schrom
-* Zach White
-* Dorothy L. Erwin
-* Brandon Brown
-* Fredrik Larsson
-* khoffrath (Real name coming soon)
-* Jonathan Chen
-* Mitch Wainer
-* John Cleaver
-* Paul Baines
-* Brandon Bennett
-* Gaelan Adams
-* Nick Charlton
-* Dustin Chapman
-* Senko Rašić
+CodeLesson, Sam Black, Michał Bartoszkiewicz, Chad Catlett, Jacob Kaplan-Moss, John Schrom, Zach White, Dorothy L. Erwin, Brandon Brown, Fredrik Larsson, Karsten Hoffrath (khoffrath), Jonathan Chen, Mitch Wainer, John Cleaver, Paul Baines, Brandon Bennett, Gaelan Adams, Nick Charlton, Dustin Chapman and Senko Rašić.

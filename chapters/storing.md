@@ -165,7 +165,7 @@ Once we have our migration script ready, we can run `alembic upgrade head` to mi
 \label{aside:}
 \heading{Related Links}
 
-For the details on configuring Alembic, creating your migration scripts and running your migrations, see the Alembic tutorial: [http://alembic.readthedocs.org/en/latest/tutorial.html](http://alembic.readthedocs.org/en/latest/tutorial.html)
+For the details on configuring Alembic, creating your migration scripts and running your migrations, see the Alembic tutorial: [http://alembic.readthedo\-cs.org/en/latest/tutorial.html](http://alembic.readthedocs.org/en/latest/tutorial.html)
 
 \end{aside}
 
